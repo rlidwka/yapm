@@ -1,0 +1,38 @@
+
+name: ynpm
+version: 0.1.0
+
+description: npm wrapper allowing to use package.yaml
+
+author:
+  name: Alex Kocharin
+  email: alex@kocharin.ru
+
+keywords:
+  - package manager
+  - modules
+  - install
+  - package.yaml
+
+preferGlobal: true
+homepage: https://npmjs.org/doc/
+ 
+repository:
+  type: git
+  url: https://github.com/rlidwka/ynpm
+
+bugs:
+  url: http://github.com/rlidwka/ynpm/issues
+
+main: ./ynpm.js
+
+bin:
+  npm: ./bin/npm-cli.js
+
+dependencies:
+  npm: '*'
+  js-yaml: '*'
+
+devDependencies:
+  async: '*'
+
