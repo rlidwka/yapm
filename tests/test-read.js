@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/local/bin/node --harmony
 
 var yaml = require('js-yaml');
 var fs = require('fs');
@@ -22,13 +22,16 @@ require('../lib/write-yaml');
 	}
 });
 
+function addtest(desc, fn) {
+	var i = tests.length;
+	tests.push(function() {
+		console.log('running test %s/%s: %s', i+1, tests.length, desc);
+		fn.apply(null, arguments);
+	});
+}
+
 process.nextTick(function() {
-	async.series(tests.map(function(fn, _i) {
-		return function() {
-			console.log('running test', _i);
-			fn.apply(null, arguments);
-		};
-	}), function(err) {
+	async.series(tests, function(err) {
 		if (err) throw err;
 		try {
 			unlink('package.json');
@@ -41,14 +44,14 @@ process.nextTick(function() {
 });
 
 // no config file exists just yet
-tests.push(function(cb) {
+addtest('nothing#sync', function(cb) {
 	assert.throws(function() {
 		console.log(fs.readFileSync('package.json'));
 	});
 	cb();
 });
 
-tests.push(function(cb) {
+addtest('nothing#async', function(cb) {
 	fs.readFile('package.json', function(err) {
 		assert(err);
 		cb();
@@ -56,17 +59,17 @@ tests.push(function(cb) {
 });
 
 // testing package.json without yaml
-tests.push(function(cb) {
+addtest('json#prepare', function(cb) {
 	write('package.json', JSON.stringify(Y));
 	cb();
 });
 
-tests.push(function(cb) {
+addtest('json#sync', function(cb) {
 	assert.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), Y);
 	cb();
 });
 
-tests.push(function(cb) {
+addtest('json#async', function(cb) {
 	fs.readFile('package.json', 'utf8', function(err, data) {
 		assert(!err);
 		assert.deepEqual(JSON.parse(data), Y);
@@ -75,12 +78,12 @@ tests.push(function(cb) {
 });
 
 // without encoding
-tests.push(function(cb) {
+addtest('json#sync2', function(cb) {
 	assert.deepEqual(JSON.parse(fs.readFileSync('package.json').toString('utf8')), Y);
 	cb();
 });
 
-tests.push(function(cb) {
+addtest('json#async2', function(cb) {
 	fs.readFile('package.json', function(err, data) {
 		assert(!err);
 		assert.deepEqual(JSON.parse(data.toString('utf8')), Y);
@@ -88,18 +91,19 @@ tests.push(function(cb) {
 	});
 });
 
-// testing both - should read json!
-tests.push(function(cb) {
-	write('package.yaml', 'garbage: garbage');
+// testing both - should read yaml!
+addtest('both#prepare', function(cb) {
+	write('package.json', '{"garbage":"garbage"}');
+	write('package.yaml', yaml.safeDump(Y));
 	cb();
 });
 
-tests.push(function(cb) {
+addtest('both#sync', function(cb) {
 	assert.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), Y);
 	cb();
 });
 
-tests.push(function(cb) {
+addtest('both#async', function(cb) {
 	fs.readFile('package.json', 'utf8', function(err, data) {
 		assert(!err);
 		assert.deepEqual(JSON.parse(data), Y);
@@ -108,18 +112,17 @@ tests.push(function(cb) {
 });
 
 // testing package.yaml without json
-tests.push(function(cb) {
+addtest('yaml#prepare', function(cb) {
 	unlink('package.json');
-	write('package.yaml', yaml.safeDump(Y));
 	cb();
 });
 
-tests.push(function(cb) {
+addtest('yaml#sync', function(cb) {
 	assert.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), Y);
 	cb();
 });
 
-tests.push(function(cb) {
+addtest('yaml#async', function(cb) {
 	fs.readFile('package.json', 'utf8', function(err, data) {
 		assert(!err);
 		assert.deepEqual(JSON.parse(data), Y);
