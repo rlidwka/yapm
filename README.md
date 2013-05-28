@@ -1,5 +1,7 @@
 
-##
+## What is it?
+
+This is npm wrapper allowing to use `package.yaml` instead of `package.json`.
 
 ## How?
 
