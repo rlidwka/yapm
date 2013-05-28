@@ -19,11 +19,14 @@ Technically speaking, it monkey-patches standard library, so *npm* **thinks** it
 
 ## Why not just use JSON?
 
-JSON suck.
 
 ## Why YAML?
 
 When I started thinking about this in 2012, I didn't know what it is. I was thinking about other things...
 
 Besides, cool Ruby guys use it and ain't complaining very much. ;)
+
+## Discussions in node.js mailing lists
+
+1. "comments in package.json" ([google groups](https://groups.google.com/forum/?fromgroups#!topic/nodejs/NmL7jdeuw0M), [markmail.org](http://markmail.org/message/prat4277mnz56mgt))
 
