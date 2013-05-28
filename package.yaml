@@ -1,6 +1,6 @@
 
 name: ynpm
-version: 0.2.0
+version: 0.2.4
 
 description: npm wrapper allowing to use package.yaml instead of package.json
 
@@ -27,7 +27,7 @@ bugs:
 main: ./ynpm.js
 
 bin:
-  npm: ./bin/npm-cli.js
+  ynpm: ./ynpm.js
 
 dependencies:
   npm: '*'

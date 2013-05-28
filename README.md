@@ -1,4 +1,8 @@
 
+**WARNING: this is pre-release, wait a few days**
+
+There is a couple of quite annoying bugs to be fixed.
+
 ## What is it?
 
 This is npm wrapper allowing to use `package.yaml` instead of `package.json`. It converts `package.yaml` to `package.json` and back on the fly.
