@@ -1,11 +1,13 @@
 
 ## What is it?
 
-This is npm wrapper allowing to use `package.yaml` instead of `package.json`.
+This is npm wrapper allowing to use `package.yaml` instead of `package.json`. It converts `package.yaml` to `package.json` and back on the fly.
 
 ## How?
 
-This module monkey-patches `fs.readFile` and `fs.writeFile` functions.
+It performs active MitM attack (so to speak) between *node* and *npm*.
+
+Technically speaking, it monkey-patches standard library, so *npm* **thinks** it is working with `package.json`, and *node* **thinks** that *npm* is working with `package.yaml`. And this module act as a middleman and converts this thing back and forth on the fly. Pretty nice little hack, huh?
 
 1. If *npm* asks filesystem to READ a file named `package.json` **AND** if there is no such file **AND** there is a file named `package.yaml`, we compile it and return resulting json to *npm* pretending that we just read what we was asked for.
 
