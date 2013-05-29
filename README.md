@@ -33,9 +33,11 @@ YAML is widely used for configuration files in Ruby on Rails. I remind you that 
 When I started thinking about this in year 2012, I didn't know what it is. I was thinking about other things...
 
 YAML is just as safe as JSON:
+
 1. it can't include arbitrary files (there is no "include" or something in spec)
 2. it can't execute arbitrary code (you can extend it of course, but by default it won't do that)
 3. it can't produce arbitrary data-types (at least when using SAFE\_SCHEMA option for [js-yaml](https://github.com/nodeca/js-yaml) parser).
+
 
 PS: note that `js-yaml.load()` with default (unsafe) parser is [just as safe](http://www.kalzumeus.com/2013/01/31/what-the-rails-security-issue-means-for-your-startup/) as `var x = eval(JSON)`. Choose your parser carefully. ;)
 
