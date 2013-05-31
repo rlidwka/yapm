@@ -81,3 +81,65 @@ addtest('nothing#async2', function(cb) {
 	});
 });
 
+// creating package.json, should write there
+addtest('json#sync', function(cb) {
+	write('package.json', '{"garbage":"garbage"}', 'utf8');
+	fs.writeFileSync('package.json', JSON.stringify(Y));
+	assert(!exists('package.yaml'));
+	assert.deepEqual(JSON.parse(read('package.json').toString('utf8')), Y);
+	unlink('package.json');
+	cb();
+});
+
+addtest('json#async', function(cb) {
+	write('package.json', '{"garbage":"garbage"}', 'utf8');
+	fs.writeFile('package.json', JSON.stringify(Y), function(err, res) {
+		assert(!err);
+		assert(!exists('package.yaml'));
+		assert.deepEqual(JSON.parse(read('package.json').toString('utf8')), Y);
+		unlink('package.json');
+		cb();
+	});
+});
+
+// creating package.yaml, should write there
+addtest('yaml#sync', function(cb) {
+	write('package.yaml', 'garbage: garbage', 'utf8');
+	fs.writeFileSync('package.json', JSON.stringify(Y));
+	assert(!exists('package.json'));
+	assert.deepEqual(yaml.safeLoad(read('package.yaml').toString('utf8')), Y);
+	unlink('package.yaml');
+	cb();
+});
+
+addtest('yaml#async', function(cb) {
+	write('package.yaml', 'garbage: garbage', 'utf8');
+	fs.writeFile('package.json', JSON.stringify(Y), function(err, res) {
+		assert(!err);
+		assert(!exists('package.json'));
+		assert.deepEqual(yaml.safeLoad(read('package.yaml').toString('utf8')), Y);
+		unlink('package.yaml');
+		cb();
+	});
+});
+
+// both exist, choose json (?)
+addtest('both#sync', function(cb) {
+	write('package.json', '{"garbage":1}', 'utf8');
+	write('package.yaml', 'garbage: 1', 'utf8');
+	fs.writeFileSync('package.json', JSON.stringify(Y));
+	assert.deepEqual(yaml.safeLoad(read('package.yaml').toString('utf8')), {garbage:1});
+	assert.deepEqual(JSON.parse(read('package.json').toString('utf8')), Y);
+	cb();
+});
+
+addtest('both#async', function(cb) {
+	write('package.json', '{"garbage":"garbage"}', 'utf8');
+	write('package.yaml', 'garbage: 1', 'utf8');
+	fs.writeFile('package.json', JSON.stringify(Y), function(err, res) {
+		assert(!err);
+		assert.deepEqual(yaml.safeLoad(read('package.yaml').toString('utf8')), {garbage:1});
+		assert.deepEqual(JSON.parse(read('package.json').toString('utf8')), Y);
+		cb();
+	});
+});
