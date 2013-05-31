@@ -1,4 +1,4 @@
-#!/usr/local/bin/node --harmony
+#!/usr/bin/env node
 
 var yaml = require('js-yaml');
 var fs = require('fs');

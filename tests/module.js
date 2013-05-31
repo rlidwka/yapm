@@ -1,4 +1,4 @@
-#!/usr/local/bin/node --harmony
+#!/usr/bin/env node
 
 // testing if we're able to fool node.js itself
 
