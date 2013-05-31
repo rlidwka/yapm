@@ -130,3 +130,14 @@ addtest('yaml#async', function(cb) {
 	});
 });
 
+addtest('yaml#doubleerr', function(cb) {
+	var count = 0;
+	fs.readFile('package.yaml/package.json', function(err) {
+		assert.equal(err.code, 'ENOTDIR');
+		if (count++) {
+			throw new Error('doubleerr callback invocation');
+		}
+		cb();
+	});
+});
+
