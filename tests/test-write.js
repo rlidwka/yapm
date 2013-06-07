@@ -12,8 +12,8 @@ var exists = fs.existsSync;
 var tests = [];
 
 var Y = yaml.safeLoad(require('fs').readFileSync('../package.yaml', 'utf8'));
-require('../lib/read-yaml');
-require('../lib/write-yaml');
+Y.test_nonascii = '\u0442\u0435\u0441\u0442';
+require('../lib');
 
 ['package.yaml', 'package.json'].forEach(function(file) {
 	if (exists(file)) {
