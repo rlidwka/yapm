@@ -36,3 +36,6 @@ dependencies:
 devDependencies:
   async: '*'
 
+optionalDependencies:
+  yaml-update: git://github.com/rlidwka/yaml-update.git
+
