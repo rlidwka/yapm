@@ -1,7 +1,3 @@
-**WARNING: this is pre-release, wait a few days**
-
-There is a couple of quite annoying bugs to be fixed.
-
 ## What is it?
 
 This is npm wrapper allowing to use `package.yaml` instead of `package.json`. It converts `package.yaml` to `package.json` and back on the fly.
@@ -12,9 +8,13 @@ It performs active MitM attack (so to speak) between *node* and *npm*.
 
 Technically speaking, it monkey-patches standard library, so *npm* **thinks** it is working with `package.json`, and *node* **thinks** that *npm* is working with `package.yaml`. And this module act as a middleman and converts this thing back and forth on the fly. Pretty nice little hack, huh?
 
-1. If *npm* asks filesystem to READ a file named `package.json` **AND** if there is no such file **AND** there is a file named `package.yaml`, we compile it and return resulting json to *npm* pretending that we just read what we was asked for.
+1. If *npm* asks filesystem to READ/STAT a file named `package.json` **AND** if there is a file named `package.yaml`, we compile it and return resulting json to *npm* pretending that we just read what we was asked for.
 
 2. If *npm* asks filesystem to WRITE a file named `package.json` **AND** if this file doesn't exist already, we write it to a file named `package.yaml` instead. This option is designed specifically for *npm init* command.
+
+3. If *npm* reads a folder with `package.yaml` file in it, we add `package.json` to the resulting list as well.
+
+4. If *npm* passes `package.json` as an argument to git, **AND** `package.yaml` exists, we replace `package.json` with `package.yaml`. This option is designed for *npm version* usage with *git*.
 
 ## Why not just use JSON?
 
@@ -29,8 +29,6 @@ Guys, seriously, JSON is designed to be written by computers, not humans. Humans
 ## Why YAML?
 
 YAML is widely used for configuration files in Ruby on Rails. I remind you that most cool node.js things were inspired by RoR world, including express (sinatra), coffee-script (ruby), and node.js itself (rails).
-
-When I started thinking about this in year 2012, I didn't know what it is. I was thinking about other things...
 
 YAML is just as safe as JSON:
 
