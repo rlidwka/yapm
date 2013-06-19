@@ -1,7 +1,6 @@
 
 name: ynpm
-version: 0.5.0
-
+version: 0.5.1
 description: npm wrapper allowing to use package.yaml instead of package.json
 
 author:
