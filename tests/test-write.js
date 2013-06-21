@@ -123,23 +123,23 @@ addtest('yaml#async', function(cb) {
 	});
 });
 
-// both exist, choose json (?)
+// both exist, so writing to yaml
 addtest('both#sync', function(cb) {
 	write('package.json', '{"garbage":1}', 'utf8');
 	write('package.yaml', 'garbage: 1', 'utf8');
 	fs.writeFileSync('package.json', JSON.stringify(Y));
-	assert.deepEqual(yaml.safeLoad(read('package.yaml').toString('utf8')), {garbage:1});
-	assert.deepEqual(JSON.parse(read('package.json').toString('utf8')), Y);
+	assert.deepEqual(yaml.safeLoad(read('package.yaml').toString('utf8')), Y);
+	assert.deepEqual(JSON.parse(read('package.json').toString('utf8')), {garbage: 1});
 	cb();
 });
 
 addtest('both#async', function(cb) {
-	write('package.json', '{"garbage":"garbage"}', 'utf8');
+	write('package.json', '{"garbage":1}', 'utf8');
 	write('package.yaml', 'garbage: 1', 'utf8');
 	fs.writeFile('package.json', JSON.stringify(Y), function(err, res) {
 		assert(!err);
-		assert.deepEqual(yaml.safeLoad(read('package.yaml').toString('utf8')), {garbage:1});
-		assert.deepEqual(JSON.parse(read('package.json').toString('utf8')), Y);
+		assert.deepEqual(yaml.safeLoad(read('package.yaml').toString('utf8')), Y);
+		assert.deepEqual(JSON.parse(read('package.json').toString('utf8')), {garbage: 1});
 		cb();
 	});
 });
