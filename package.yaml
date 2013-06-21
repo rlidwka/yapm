@@ -28,6 +28,10 @@ main: ./ynpm.js
 bin:
   ynpm: ./ynpm.js
 
+engines:
+  # depends on stream updates, seriously won't work on 0.8.x
+  node: '>= 0.9.4'
+
 dependencies:
   npm: '*'
   js-yaml: '*'
