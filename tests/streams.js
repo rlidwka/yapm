@@ -32,7 +32,7 @@ function addtest(desc, fn) {
 
 function check_stream(should_be, cb) {
 	var stream = fs.createReadStream('package.json');
-	stream.setEncoding('utf8');
+	//stream.setEncoding('utf8');
 	var data = '';
 	stream.on('data', function(d) {
 		data += d;
