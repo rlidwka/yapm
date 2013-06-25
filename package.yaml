@@ -1,5 +1,5 @@
 
-name: ynpm
+name: yapm
 version: 0.5.2
 description: npm wrapper allowing to use package.yaml instead of package.json
 
@@ -18,15 +18,15 @@ homepage: https://npmjs.org/doc/
  
 repository:
   type: git
-  url: https://github.com/rlidwka/ynpm
+  url: https://github.com/rlidwka/yapm
 
 bugs:
-  url: http://github.com/rlidwka/ynpm/issues
+  url: http://github.com/rlidwka/yapm/issues
 
-main: ./ynpm.js
+main: ./yapm.js
 
 bin:
-  ynpm: ./ynpm.js
+  yapm: ./yapm.js
 
 dependencies:
   npm: '*'

@@ -8,10 +8,10 @@ The main goal is to be able to use YAML format everywhere on the developer compu
 
 ```
 # install it as a global module (maybe with sudo)
-$ npm install -g ynpm
+$ npm install -g yapm
 
 # run it just as you'd run npm itself
-$ ynpm install whatever
+$ yapm install whatever
 ```
 
 ## Why not just use JSON?
