@@ -12,6 +12,7 @@ keywords:
   - modules
   - install
   - package.yaml
+  - npm
 
 preferGlobal: true
 homepage: https://npmjs.org/doc/
