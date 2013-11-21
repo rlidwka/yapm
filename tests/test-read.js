@@ -15,7 +15,7 @@ var Y = yaml.safeLoad(require('fs').readFileSync('../package.yaml', 'utf8'))
 Y.test_nonascii = '\u0442\u0435\u0441\u0442'
 require('../lib')
 
-;['package.yaml', 'package.json'].forEach(function(file) {
+;['package.yaml', 'package.json5', 'package.json'].forEach(function(file) {
 	if (exists(file)) {
 		console.error('%s exists in current directory, refusing to start', file)
 		process.exit(1)
