@@ -12,6 +12,9 @@ keywords:
   - modules
   - install
   - package.yaml
+  - package.json5
+  - yaml
+  - json5
   - npm
 
 preferGlobal: true
@@ -33,6 +36,7 @@ dependencies:
   npm: '*'
   js-yaml: '*'
   through: '*'
+  json5-utils: '*'
 
 devDependencies:
   async: '*'
