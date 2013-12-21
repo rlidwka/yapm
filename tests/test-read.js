@@ -13,6 +13,8 @@ var read = fs.readFileSync
 
 var Y = yaml.safeLoad(require('fs').readFileSync('../package.yaml', 'utf8'))
 Y.test_nonascii = '\u0442\u0435\u0441\u0442'
+var J5 = {test:123,something:456}
+var J5str = '{test:123,something:456}'
 require('../lib')
 
 ;['package.yaml', 'package.json5', 'package.json'].forEach(function(file) {
@@ -141,3 +143,41 @@ addtest('yaml#doubleerr', function(cb) {
 	})
 })
 
+addtest('yaml#doubleerr', function(cb) {
+	var count = 0
+	fs.readFile('package.yaml/package.json', function(err) {
+		assert.equal(err.code, 'ENOTDIR')
+		if (count++) {
+			throw new Error('doubleerr callback invocation')
+		}
+		cb()
+	})
+})
+
+addtest('json5+yaml#sync', function(cb) {
+	assert.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), Y)
+	cb()
+})
+
+addtest('json5#prepare', function(cb) {
+	unlink('package.yaml')
+	write('package.json5', J5str)
+	cb()
+})
+
+addtest('json5#sync', function(cb) {
+	assert.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), J5)
+	cb()
+})
+
+addtest('json5#async', function(cb) {
+	fs.readFile('package.json', 'utf8', function(err, data) {
+		assert(!err)
+		assert.deepEqual(JSON.parse(data), J5)
+		cb()
+	})
+})
+
+addtest('cleanup', function(cb) {
+	unlink('package.json5')
+})

@@ -14,8 +14,7 @@ var read = fs.readFileSync
 
 var Y = yaml.safeLoad(require('fs').readFileSync('../package.yaml', 'utf8'))
 Y.main = 'blablabla.js'
-require('../lib/read-yaml')
-require('../lib/write-yaml')
+require('../lib')
 
 ;['package.json', 'blablabla.js', 'index.js'].forEach(function(file) {
 	if (exists(file)) {

@@ -13,6 +13,8 @@ var read = fs.readFileSync
 
 var Y = yaml.safeLoad(require('fs').readFileSync('../package.yaml', 'utf8'))
 Y.test_nonascii = '\u0442\u0435\u0441\u0442'
+var J5 = {test:123,something:456}
+var J5str = '{test:123,something:456}'
 require('../lib')
 
 ;['package.yaml', 'package.json5', 'package.json'].forEach(function(file) {
@@ -134,5 +136,28 @@ addtest('yaml#lstat', function(cb) {
 
 addtest('yaml#stream', function(cb) {
 	check_stream(JSON.stringify(Y), cb)
+})
+
+// testing package.json5 without json
+addtest('json5#prepare', function(cb) {
+	unlink('package.yaml')
+	write('package.json5', J5str)
+	cb()
+})
+
+addtest('json5#lstat', function(cb) {
+	fs.lstat('package.json', function(err, data) {
+		assert(!err)
+		assert.equal(data.size, JSON.stringify(J5).length)
+		cb()
+	})
+})
+
+addtest('json5#stream', function(cb) {
+	check_stream(JSON.stringify(J5), cb)
+})
+
+addtest('cleanup', function(cb) {
+	unlink('package.json5')
 })
 
