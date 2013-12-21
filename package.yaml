@@ -36,7 +36,7 @@ dependencies:
   npm: '*'
   js-yaml: '*'
   through: '*'
-  json5-utils: '*'
+  jju: '*'
 
 devDependencies:
   async: '*'
