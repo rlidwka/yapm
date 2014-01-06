@@ -7,7 +7,7 @@ html_docdeps = html/dochead.html \
                html/docfoot.html \
                html/docfoot-script.html \
                scripts/doc-build.sh \
-               package.json
+               package.json5
 
 cli_mandocs = $(shell find doc/cli -name '*.md' \
                |sed 's|.md|.1|g' \
@@ -91,15 +91,15 @@ doc-clean:
     man
 
 # use `npm install ronn` for this to work.
-man/man1/npm-README.1: README.md scripts/doc-build.sh package.json
+man/man1/npm-README.1: README.md scripts/doc-build.sh package.json5
 	@[ -d man/man1 ] || mkdir -p man/man1
 	scripts/doc-build.sh $< $@
 
-man/man1/%.1: doc/cli/%.md scripts/doc-build.sh package.json
+man/man1/%.1: doc/cli/%.md scripts/doc-build.sh package.json5
 	@[ -d man/man1 ] || mkdir -p man/man1
 	scripts/doc-build.sh $< $@
 
-man/man3/%.3: doc/api/%.md scripts/doc-build.sh package.json
+man/man3/%.3: doc/api/%.md scripts/doc-build.sh package.json5
 	@[ -d man/man3 ] || mkdir -p man/man3
 	scripts/doc-build.sh $< $@
 
@@ -109,18 +109,18 @@ man/man5/npm-json.5: man/man5/package.json.5
 man/man5/npm-global.5: man/man5/npm-folders.5
 	cp $< $@
 
-man/man5/%.5: doc/files/%.md scripts/doc-build.sh package.json
+man/man5/%.5: doc/files/%.md scripts/doc-build.sh package.json5
 	@[ -d man/man5 ] || mkdir -p man/man5
 	scripts/doc-build.sh $< $@
 
-doc/misc/npm-index.md: scripts/index-build.js package.json
+doc/misc/npm-index.md: scripts/index-build.js package.json5
 	node scripts/index-build.js > $@
 
 html/doc/index.html: doc/misc/npm-index.md $(html_docdeps)
 	@[ -d html/doc ] || mkdir -p html/doc
 	scripts/doc-build.sh $< $@
 
-man/man7/%.7: doc/misc/%.md scripts/doc-build.sh package.json
+man/man7/%.7: doc/misc/%.md scripts/doc-build.sh package.json5
 	@[ -d man/man7 ] || mkdir -p man/man7
 	scripts/doc-build.sh $< $@
 
