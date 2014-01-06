@@ -23,5 +23,6 @@ html/*.png
 !.npmignore
 
 /npm-*.tgz
+/yapm-*.tgz
 
 *.pyc
