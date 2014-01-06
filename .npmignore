@@ -11,6 +11,7 @@ node_modules/ronn
 node_modules/tap
 node_modules/.bin
 node_modules/npm-registry-mock
+node_modules/async
 /npmrc
 /release/
 
