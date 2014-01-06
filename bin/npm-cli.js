@@ -15,9 +15,6 @@ if (typeof WScript !== "undefined") {
 
 process.title = "npm"
 
-// yapm stuff
-require('../lib/yapm')
-
 var log = require("npmlog")
 log.pause() // will be unpaused when config is loaded.
 log.info("it worked if it ends with", "ok")

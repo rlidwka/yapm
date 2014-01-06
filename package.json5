@@ -34,7 +34,6 @@
 		lib: './lib',
 		bin: './bin',
 	},
-	main: './lib/npm.js',
 	bin: './bin/npm-cli.js',
 	scripts: {
 		test: 'node ./test/run.js && tap test/tap/*.js',
