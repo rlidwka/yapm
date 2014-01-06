@@ -1,6 +1,6 @@
 
 name: yapm
-version: 0.7.1
+version: 0.7.2
 description: npm wrapper allowing to use package.yaml instead of package.json
 
 author:
