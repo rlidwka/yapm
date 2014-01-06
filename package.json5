@@ -98,6 +98,7 @@
 		'js-yaml': '*', // optional?
 		'through': '*', // can be dropped in node 0.10+
 		'jju': '*',
+		'yaml-update': '*',
 	},
 	bundleDependencies: [
 		'semver',
@@ -148,6 +149,10 @@
 		'ansicolors',
 		'ansistyles',
 		'path-is-inside',
+		'js-yaml',
+		'through',
+		'jju',
+		'yaml-update',
 	],
 	devDependencies: {
 		ronn: '~0.3.6',
@@ -155,9 +160,6 @@
 		'npm-registry-mock': '~0.5.5',
 
 		async: '*', // yapm tests
-	},
-	optionalDependencies: {
-		'yaml-update': '*',
 	},
 
 	/*
