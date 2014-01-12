@@ -25,3 +25,6 @@ html/*.png
 /npm-*.tgz
 
 *.pyc
+
+/yapm-*.tgz
+/npm-test-*

@@ -150,6 +150,9 @@
 		'ansistyles',
 		'path-is-inside',
 		'columnify',
+		'js-yaml',
+		'through',
+		'jju',
 	],
 	devDependencies: {
 		ronn: '~0.3.6',

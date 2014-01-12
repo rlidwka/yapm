@@ -8,6 +8,7 @@ var path = require("path")
   , fs = require("graceful-fs")
   , npmpkg = path.dirname(testdir)
   , npmcli = path.join(__dirname, "bin", "npm-cli.js")
+  , binName = 'yapm'
 
 var temp = process.env.TMPDIR
          || process.env.TMP
@@ -72,7 +73,7 @@ function exec (cmd, shouldFail, cb) {
   // special: replace 'node' with the current execPath,
   // and 'npm' with the thing we installed.
   var cmdShow = cmd
-  var npmReplace = path.resolve(npmPath, "npm")
+  var npmReplace = path.resolve(npmPath, binName)
   var nodeReplace = process.execPath
   if (process.platform === "win32") {
     npmReplace = '"' + npmReplace + '"'

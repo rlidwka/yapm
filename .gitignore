@@ -20,3 +20,5 @@ npm-debug.log
 /npm-*.tgz
 /node_modules/npm-registry-client/test/fixtures
 *.pyc
+/yapm-*.tgz
+/npm-test-*
