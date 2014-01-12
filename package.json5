@@ -4,7 +4,7 @@
    *  Main info
    */
   name: 'yapm',
-  version: '1.0.0-1323', // upstream npm@1.3.23
+  version: '1.0.0-0', // upstream npm@1.3.23
   description: 'A package manager for node (npm fork)',
 
   author: {
