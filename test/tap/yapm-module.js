@@ -2,8 +2,6 @@ var test = require('tap').test
 
 var yaml = require('js-yaml')
   , fs = require('fs')
-  , assert = require('assert')
-  , async = require('async')
 
 var read = fs.readFileSync
   , write = fs.writeFileSync
