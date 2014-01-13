@@ -30,9 +30,12 @@
    */
   directories: {
     doc: './doc',
-    man: './man',
     lib: './lib',
     bin: './bin',
+
+    // not providing any man pages since they
+    // seem to conflict with npm installation
+    //man: './man',
   },
   main: './lib/npm.js',
   bin: './bin/npm-cli.js',
