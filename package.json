@@ -55,7 +55,7 @@
     "uid-number": "0",
     "archy": "0",
     "chownr": "0",
-    "npmlog": "0.0.6",
+    "npmlog": "visionmedia/npmlog",
     "ansi": "~0.2.1",
     "npm-registry-client": "~0.3.3",
     "read-package-json": "~1.1.5",
