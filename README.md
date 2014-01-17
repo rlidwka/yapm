@@ -3,9 +3,9 @@
 
   Personal fork of npm with the following changes:
 
-  - change the output formatting as shown below
-  - better search output with github repository links that you can cmd+click to view
-  - remove some error reporting that is only useful to people debugging npm
+  - __output formatting__ changes as shown below
+  - better __search output__ with github repository links that you can cmd+click to view
+  - remove some __error reporting__ that is only useful to people debugging npm
 
 ## Output
 
