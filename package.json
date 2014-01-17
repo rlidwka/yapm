@@ -1,6 +1,6 @@
 {
   "version": "1.3.23",
-  "name": "npm",
+  "name": "tj-npm",
   "publishConfig": {
     "proprietary-attribs": false
   },
