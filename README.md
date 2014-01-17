@@ -6,6 +6,7 @@
   - __output formatting__ changes as shown below
   - better __search output__ with github repository links that you can cmd+click to view
   - remove some __error reporting__ that is only useful to people debugging npm
+  - remove annoying __readme__ and __repository__ field warnings
 
 ## Output
 
