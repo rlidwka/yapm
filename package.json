@@ -146,7 +146,6 @@
   "scripts": {
     "test": "node ./test/run.js && tap test/tap/*.js",
     "tap": "tap test/tap/*.js",
-    "prepublish": "node bin/npm-cli.js prune --prefix=. --no-global && rm -rf test/*/*/node_modules && make -j32 doc",
     "dumpconf": "env | grep npm | sort | uniq",
     "echo": "node bin/npm-cli.js"
   },
