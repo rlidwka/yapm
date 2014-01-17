@@ -81,7 +81,8 @@
     "ansistyles": "~0.1.3",
     "path-is-inside": "~1.0.0",
     "columnify": "0.1.2",
-    "printf": "~0.1.2"
+    "printf": "~0.1.2",
+    "chalk": "~0.4.0"
   },
   "bundleDependencies": [
     "semver",
