@@ -4,7 +4,7 @@
    *  Main info
    */
   name: 'yapm',
-  version: '1.0.0-1323', // upstream npm@1.3.23
+  version: '1.0.0-1323', // upstream npm@1.3.24
   description: 'A package manager for node (npm fork)',
 
   author: {
@@ -67,7 +67,7 @@
     'mkdirp': '~0.3.5',
     'read': '~1.0.4',
     'lru-cache': '~2.5.0',
-    'node-gyp': '~0.12.0',
+    'node-gyp': '~0.12.2',
     'fstream-npm': '~0.1.6',
     'uid-number': '0',
     'archy': '0',
@@ -75,7 +75,7 @@
     'npmlog': '0.0.6',
     'ansi': '~0.2.1',
     'npm-registry-client': '~0.3.3',
-    'read-package-json': '~1.1.5',
+    'read-package-json': '~1.1.6',
     'read-installed': '~0.2.2',
     'glob': '~3.2.6',
     'init-package-json': '0.0.14',
