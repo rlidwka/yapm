@@ -40,6 +40,11 @@ function tags(pkg, fn) {
 
   request(opts, function(err, res, body){
     if (err) throw err;
+
+    var l = ~~res.headers['x-ratelimit-limit'];
+    var n = ~~res.headers['x-ratelimit-remaining'];
+    if (0 == n) return fn(new Error('ratelimit of ' + l + ' requests exceeded'));
+
     fn(null, body);
   });
 }
