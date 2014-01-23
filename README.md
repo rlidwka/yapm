@@ -47,3 +47,7 @@ Then run:
 ```
 $ npm config set github_token <token>
 ```
+
+# License
+
+  Whatever npm is + MIT
