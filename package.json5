@@ -99,6 +99,12 @@
     'path-is-inside': '~1.0.0',
     'columnify': '0.1.2',
 
+    // visionmedia/npm deps
+    'chalk': '~0.4.0',
+    'gh-lookup': '~0.4.0',
+    'printf': '~0.1.2',
+
+    // our own deps
     'js-yaml': '*', // optional?
     'through': '*', // can be dropped in node 0.10+
     'jju': '*',
@@ -158,6 +164,9 @@
     'through',
     'jju',
     'yaml-update',
+    'chalk',
+    'gh-lookup',
+    'printf',
   ],
   devDependencies: {
     ronn: '~0.3.6',
