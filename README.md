@@ -9,6 +9,12 @@
   - remove some __error reporting__ that is only useful to people debugging npm
   - remove annoying __readme__ and __repository__ field warnings
 
+## Installation
+
+```
+$ npm install -g visionmedia/npm
+```
+
 ## Output
 
   Subjectively cleaner output:
