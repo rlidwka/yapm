@@ -83,7 +83,7 @@
     "columnify": "0.1.2",
     "printf": "~0.1.2",
     "chalk": "~0.4.0",
-    "gh-lookup": "~0.3.0"
+    "gh-lookup": "~0.4.0"
   },
   "bundleDependencies": [
     "semver",

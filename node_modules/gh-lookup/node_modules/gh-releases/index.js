@@ -18,7 +18,6 @@ var assert = require('assert');
 
 module.exports = function(opts, fn){
   assert(opts, 'config required');
-  assert(opts.token, 'github token required');
   assert(opts.repo, 'github repo required');
   tags(opts, fn);
 };
@@ -33,12 +32,11 @@ function tags(pkg, fn) {
 
   var opts = {
     url: url,
-    headers: {
-      'User-Agent': 'npm',
-      'Authorization': 'Bearer ' + pkg.token
-    },
+    headers: { 'User-Agent': 'npm' },
     json: true
   };
+
+  if (pkg.token) opts.headers.Authorization = 'Bearer ' + pkg.token;
 
   request(opts, function(err, res, body){
     if (err) throw err;
