@@ -28,7 +28,7 @@
   you've probably failed. This fork of npm adds semver support for exactly that.
 
   For example the following [component](https://github.com/component/component)-style dependency definitions allow you to specify
-  the username and repository, as well as the version, this is true for both public and
+  the username/repository, as well as the version - this is true for both public and
   private repos.
 
 ```json
