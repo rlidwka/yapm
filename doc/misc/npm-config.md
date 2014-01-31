@@ -317,7 +317,7 @@ the git binary.
 
 Tag the commit when using the `npm version` command.
 
-### github_token
+### github-token
 
 * Default: null
 * Type: String

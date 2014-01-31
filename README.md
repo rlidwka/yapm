@@ -51,7 +51,7 @@ For authentiation you need to create an access token:
 Then run:
 
 ```
-$ npm config set github_token <token>
+$ npm config set github-token <token>
 ```
 
 # License
