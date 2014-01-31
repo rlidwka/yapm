@@ -43,7 +43,7 @@ test("url-dependencies: do not download subsequent times", function(t) {
 })
 
 function tarballWasFetched(output){
-  return output.indexOf("http GET http://localhost:1337/underscore/-/underscore-1.3.1.tgz") > -1
+  return output.indexOf("GET http://localhost:1337/underscore/-/underscore-1.3.1.tgz") > -1
 }
 
 function performInstall (cb) {
