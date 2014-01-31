@@ -317,6 +317,14 @@ the git binary.
 
 Tag the commit when using the `npm version` command.
 
+### github_token
+
+* Default: null
+* Type: String
+
+Github auth token, in case you're using private github repositories. You
+can create one [here](https://github.com/settings/applications).
+
 ### global
 
 * Default: false
