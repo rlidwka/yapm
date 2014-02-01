@@ -28,5 +28,9 @@ $ npm install -g yapm
 
 # run it just as you'd run npm itself
 $ yapm install whatever
+
+# if you want to write 'npm' and hate the name change,
+# you might want to use an alias (i.e. write into ~/.bashrc)
+$ alias npm=yapm
 ```
 
