@@ -1,4 +1,3 @@
-
 "yapm" is a package manager for node.js (npm fork)
 
 ## Changes
@@ -22,7 +21,7 @@
 
 ## Installation
 
-```
+```sh
 # install it as a global module (maybe with sudo)
 $ npm install -g yapm
 
