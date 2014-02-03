@@ -67,6 +67,8 @@ assert.equal(stringify(NaN), 'NaN')
 assert.equal(stringify(NaN, {mode: 'json'}), 'null')
 assert.equal(stringify(-0), '-0')
 
+assert.equal(stringify('test', null), "'test'")
+
 var array = [""]
 var expected = "''"
 for (var i = 0; i < 1000; i++) {

@@ -1,13 +1,14 @@
 var assert = require('assert')
 var parse = require('../').parse
 
-function addTest(arg, row, col) {
+function addTest(arg, row, col, errRegExp) {
 	var fn = function() {
 		try {
 			parse(arg)
 		} catch(err) {
 			if (row !== undefined) assert.equal(err.row, row, 'wrong row: ' + err.row)
 			if (col !== undefined) assert.equal(err.column, col, 'wrong column: ' + err.column)
+			if (errRegExp) assert(errRegExp.exec(err.message))
 			return
 		}
 		throw new Error("no error")
@@ -39,4 +40,8 @@ addTest('["\\\u2029",\n;', 3, 1)
 
 // bareword rewind
 addTest('nulz', 1, 1)
+
+// no data
+addTest('  ', 1, 3, /No data.*whitespace/)
+addTest('', 1, 1, /No data.*empty input/)
 

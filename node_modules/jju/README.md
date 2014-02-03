@@ -8,7 +8,7 @@ npm install jju
 
 ## Usage
 
-This module provides following functions: 
+This module provides following functions:
 
 1. `jju.parse()` parses json/json5 text and returns a javascript value it corresponds to
 2. `jju.stringify()` converts javascript value to an appropriate json/json5 text
@@ -39,9 +39,9 @@ Options:
    - "ignore" - ignore reserved keys
    - "throw" - throw SyntaxError in case of reserved keys
    - "replace" - replace reserved keys, this is the default JSON.parse behaviour, unsafe
-     
+
      Reserved keys are keys that exist in an empty object (`hasOwnProperty`, `__proto__`, etc.).
-     
+
 ```javascript
 // 'ignore' will cause reserved keys to be ignored:
 parse('{hasOwnProperty: 1}', {reserved_keys: 'ignore'}) == {}
@@ -57,17 +57,17 @@ parse('{hasOwnProperty: 1, x: 2}', {reserved_keys: 'ignore'}).hasOwnProperty('x'
 
 
  - null\_prototype - create object as Object.create(null) instead of '{}' (Boolean)
- 
+
    if `reserved_keys != 'replace'`, default is **false**
-   
+
    if `reserved_keys == 'replace'`, default is **true**
-   
+
    It is usually unsafe and not recommended to change this option to false in the last case.
-  
+
  - reviver - reviver function - Function
- 
+
    This function should follow JSON specification
-   
+
  - mode - operation mode, set it to 'json' if you want to throw on non-strict json files (String)
 
 ### jju.stringify() function
@@ -89,28 +89,38 @@ Options:
 
  - ascii - output ascii only (Boolean, default=false)
    If this option is enabled, output will not have any characters except of 0x20-0x7f.
- 
+
  - indent - indentation (String, Number or Boolean, default='\t')
    This option follows JSON specification.
- 
+
  - quote - enquoting char (String, "'" or '"', default="'")
  - quote\_keys - whether keys quoting in objects is required or not (String, default=false)
    If you want `{"q": 1}` instead of `{q: 1}`, set it to true.
-   
+
  - replacer - replacer function or array (Function or Array)
    This option follows JSON specification.
 
  - no\_trailing\_comma = don't output trailing comma (Boolean, default=false)
    If this option is set, arrays like this `[1,2,3,]` will never be generated. Otherwise they may be generated for pretty printing.
-   
+
  - mode - operation mode, set it to 'json' if you want correct json in the output (String)
- 
+
    Currently it's either 'json' or something else. If it is 'json', following options are implied:
-   
+
    - options.quote = '"'
    - options.no\_trailing\_comma = true
    - options.quote\_keys = true
    - '\x' literals are not used
+
+### jju.tokenize() function
+
+### jju.update() function
+
+### jju.analyze() function
+
+Not yet implemented, and the API is TBA.
+
+It will probably be able to detect indentation, line endings, quote style and things like that.
 
 ## Advantages over existing JSON libraries
 
