@@ -113,11 +113,14 @@ function detect_indent_style(tokens, is_array, begin, end, stack) {
 		end = find_last_non_ws_token(tokens, begin, end - 1)
 	if (end === false) return result
 
+	//                              ' "key"  : "value"  ,'
+	// skipping value, we're now here         ^
+	var level = tokens[end+1].stack.length
+	assert.equal(tokens[end].stack.length, level+1)
+	while(tokens[end].stack.length > level) end--
+
 	if (!is_array) {
-		//                              ' "key"  : "value"  ,'
-		// skipping value, we're now here         ^
-		assert.equal(tokens[end].type, 'literal')
-		while(is_whitespace(tokens[--end].type)) {
+		while(is_whitespace(tokens[end].type)) {
 			if (end < begin) return result
 			if (tokens[end].type === 'whitespace') {
 				result.sep2.unshift(tokens[end])
@@ -125,6 +128,7 @@ function detect_indent_style(tokens, is_array, begin, end, stack) {
 				// newline, comment or other unrecognized codestyle
 				return result
 			}
+			end--
 		}
 
 		//                              ' "key"  : "value"  ,'
@@ -140,12 +144,14 @@ function detect_indent_style(tokens, is_array, begin, end, stack) {
 				return result
 			}
 		}
+
+		assert.equal(tokens[end].type, 'literal')
+		end--
 	}
 
 	//                              ' "key"  : "value"  ,'
 	// skipping key, we're now here  ^
-	assert.equal(tokens[end].type, 'literal')
-	while(is_whitespace(tokens[--end].type)) {
+	while(is_whitespace(tokens[end].type)) {
 		if (end < begin) return result
 		if (tokens[end].type === 'whitespace') {
 			result.prefix.unshift(tokens[end])
@@ -156,6 +162,7 @@ function detect_indent_style(tokens, is_array, begin, end, stack) {
 			// comment or other unrecognized codestyle
 			return result
 		}
+		end--
 	}
 
 	return result
