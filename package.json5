@@ -80,7 +80,6 @@
     'nopt': '~2.1.2',
     'npm-registry-client': '~0.3.5',
     'npm-user-validate': '0.0.3',
-    'npmlog': '0.0.6',
     'once': '~1.3.0',
     'opener': '~1.3.0',
     'osenv': '0',
@@ -116,6 +115,7 @@
     // maybe they'll be forked to separate repositories in the future,
     // but they're set to be never resolved for now
     'npmconf': '<0', // '~0.1.12'
+    'npmlog': '<0', // '0.0.6'
     'read-package-json': '<0', // '~1.1.6'
   },
   bundleDependencies: [
