@@ -4,10 +4,10 @@
 
 ### Our own changes
 
-  - full support for package.json5 and package.yaml file formats
+  - full support for package.json5 and package.yaml file formats ([see details](https://github.com/rlidwka/yapm/blob/master/changes/package-yaml.md)).
   - if package.json or any other json document is malformed, we show exactly where the error is
 
-### Pulled from https://github.com/visionmedia/npm
+### Pulled from [visionmedia/npm](https://github.com/visionmedia/npm)
 
   - adds support for public & private __semver-friendly github tarballs__
   - __output formatting__ changes
@@ -15,7 +15,7 @@
   - remove some __error reporting__ that is only useful to people debugging npm
   - remove annoying __readme__ and __repository__ field warnings
 
-### Pulled from https://github.com/npm/npm
+### Pulled from [npm/npm](https://github.com/npm/npm)
 
   - Everything else, this repository is synced with upstream at least once a week
 
