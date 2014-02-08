@@ -78,7 +78,8 @@
     'mkdirp': '~0.3.5',
     'node-gyp': '~0.12.2',
     'nopt': '~2.1.2',
-    'npm-registry-client': '~0.3.5',
+    'npm-install-checks': '~1.0.0',
+    'npm-registry-client': '~0.3.6',
     'npm-user-validate': '0.0.3',
     'once': '~1.3.0',
     'opener': '~1.3.0',
@@ -175,6 +176,7 @@
     'chalk',
     'gh-lookup',
     'printf',
+    'npm-install-checks',
   ],
   devDependencies: {
     ronn: '~0.3.6',
@@ -203,7 +205,7 @@
     publishtest: false,
   },
   engines: {
-    node: '>=0.6',
+    node: '>=0.8',
     npm: '1',
   },
   license: 'Artistic-2.0',
