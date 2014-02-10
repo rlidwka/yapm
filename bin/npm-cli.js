@@ -19,13 +19,6 @@ var log = require("npmlog")
 log.pause() // will be unpaused when config is loaded.
 log.info("it worked if it ends with", "ok")
 
-// add spaces at the beginning
-// to visually distinguish yapm output and other stuff
-console.log()
-//process.on('exit', function() {
-//  console.log()
-//})
-
 var fs = require("graceful-fs")
   , path = require("path")
   , npm = require("../lib/npm.js")
