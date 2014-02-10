@@ -1,5 +1,5 @@
 Semver support for GitHub packages
-==================================
+----------------------------------
 
 This change adds support for public & private semver-friendly github tarballs.
 
