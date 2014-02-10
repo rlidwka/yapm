@@ -6,6 +6,7 @@
 
   - full support for package.json5 and package.yaml file formats ([see details](https://github.com/rlidwka/yapm/blob/master/changes/package-yaml.md)).
   - if package.json or any other json document is malformed, we show exactly where the error is
+  - a bunch of other minor changes ([see details](https://github.com/rlidwka/yapm/blob/master/changes/minor-fixes.md)).
 
 ### Pulled from [visionmedia/npm](https://github.com/visionmedia/npm)
 
