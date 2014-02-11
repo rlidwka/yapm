@@ -157,13 +157,13 @@ assert.deepEqual(create("[0 /*z*/ , /*z*/]").update([])+"", '[ /*z*/]')
 // mode
 assert.equal(create('{"test":123}', {mode:'json'}).update({q:1,w:2})+'', '{"q":1,"w":2}')
 
-assert.equal(create('{1:2}').update({ a: 1, b: [1,2], c: 3})+'', '{a:1,b:[\n\t1,\n\t2,\n],c:3}')
+assert.equal(create('{1:2}').update({ a: 1, b: [1,2], c: 3})+'', '{a:1,b:[1,2],c:3}')
 
 // undef
 //assert.throws(function(){ jju.update(undefined, undefined) }, /root doc/)
 assert.equal(jju.update(undefined, undefined), '')
 assert.equal(jju.update(undefined, 42), '42')
-assert.equal(jju.update(undefined, {x: 5}), '{\n\tx: 5,\n}')
+assert.equal(jju.update(undefined, {x: 5}), '{x:5}')
 
 /*
  *  real test

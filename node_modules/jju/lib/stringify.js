@@ -58,11 +58,12 @@ function _stringify(object, options, recursiveLvl, currentKey) {
 	// if add, it's an internal indentation, so we add 1 level and a eol
 	// if !add, it's an ending indentation, so we just indent
 	function indent(str, add) {
-		if (!options.indent) return str
+		var prefix = options._prefix ? options._prefix : ''
+		if (!options.indent) return prefix + str
 		var result = ''
 		var count = recursiveLvl + (add || 0)
 		for (var i=0; i<count; i++) result += options.indent
-		return result + str + (add ? '\n' : '')
+		return prefix + result + str + (add ? '\n' : '')
 	}
 
 	function _stringify_key(key) {

@@ -1,4 +1,4 @@
-`jju` - a set of utilities to operate on JSON / JSON5 documents
+`jju` - a set of utilities to work with JSON / JSON5 documents
 
 ## Installation
 
