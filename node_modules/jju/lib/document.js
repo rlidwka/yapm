@@ -7,6 +7,7 @@
 var assert = require('assert')
   , tokenize = require('./parse').tokenize
   , stringify = require('./stringify').stringify
+  , analyze = require('./analyze').analyze
 
 function isObject(x) {
 	return typeof(x) === 'object' && x !== null
@@ -98,25 +99,26 @@ function detect_indent_style(tokens, is_array, begin, end, stack) {
 		sep2: [],
 		suffix: [],
 		prefix: [],
+		newline: [],
 	}
 
-	if (tokens[end].type === 'separator' && tokens[end].stack.length !== stack.length-1 && tokens[end].raw !== ',') {
+	if (tokens[end].type === 'separator' && tokens[end].stack.length !== stack.length+1 && tokens[end].raw !== ',') {
 		// either a beginning of the array (no last element) or other weird situation
 		//
 		// just return defaults
 		return result
 	}
 
+	var level = tokens[end+1].stack.length
+
 	//                              ' "key"  : "value"  ,'
-	// skipping last separator, we're now here ^^^^^^^
+	// skipping last separator, we're now here        ^^
 	if (tokens[end].type === 'separator')
 		end = find_last_non_ws_token(tokens, begin, end - 1)
 	if (end === false) return result
 
 	//                              ' "key"  : "value"  ,'
-	// skipping value, we're now here         ^
-	var level = tokens[end+1].stack.length
-	assert.equal(tokens[end].stack.length, level+1)
+	// skipping value                          ^^^^^^^
 	while(tokens[end].stack.length > level) end--
 
 	if (!is_array) {
@@ -132,7 +134,7 @@ function detect_indent_style(tokens, is_array, begin, end, stack) {
 		}
 
 		//                              ' "key"  : "value"  ,'
-		// skipping separator, we're now here  ^^
+		// skipping separator                    ^
 		assert.equal(tokens[end].type, 'separator')
 		assert.equal(tokens[end].raw, ':')
 		while(is_whitespace(tokens[--end].type)) {
@@ -150,13 +152,13 @@ function detect_indent_style(tokens, is_array, begin, end, stack) {
 	}
 
 	//                              ' "key"  : "value"  ,'
-	// skipping key, we're now here  ^
+	// skipping key                   ^^^^^
 	while(is_whitespace(tokens[end].type)) {
 		if (end < begin) return result
 		if (tokens[end].type === 'whitespace') {
 			result.prefix.unshift(tokens[end])
 		} else if (tokens[end].type === 'newline') {
-			result.prefix.unshift(tokens[end])
+			result.newline.unshift(tokens[end])
 			return result
 		} else {
 			// comment or other unrecognized codestyle
@@ -177,6 +179,11 @@ function Document(text, options) {
 	this._data = tokens.data
 	tokens.data = null
 	this._options = options
+
+	var stats = analyze(text, options)
+	if (options.indent == null) {
+		options.indent = stats.indent
+	}
 }
 
 // return true if it's a proper object
@@ -259,12 +266,12 @@ Document.prototype.set = function(path, value) {
 	}
 	// assume that i == path.length-1 here
 
-	var newtokens = value_to_tokenlist(value, path, this._options)
-
 	if (path.length === 0) {
+		var newtokens = value_to_tokenlist(value, path, this._options)
 		// all good
 
 	} else if (!new_key) {
+		var newtokens = value_to_tokenlist(value, path, this._options)
 		// replace old value with a new one (or deleting something)
 		var pos_old = position
 		position = find_element_in_tokenlist(path[i], i, this._tokens, position[0], position[1])
@@ -315,8 +322,17 @@ Document.prototype.set = function(path, value) {
 		           ? detect_indent_style(this._tokens, Array.isArray(data), position[0] + 1, pos2, path_1)
 		           : {}
 
+		var _prefix = this._options._prefix
+		this._options._prefix = indent.prefix.map(function(x) {
+			return x.raw
+		}).join('')
+		var newtokens = value_to_tokenlist(value, path, this._options)
+		this._options._prefix = _prefix
+
 		// adding leading whitespaces according to detected codestyle
 		var prefix = []
+		if (indent.newline && indent.newline.length)
+			prefix = prefix.concat(indent.newline)
 		if (indent.prefix && indent.prefix.length)
 			prefix = prefix.concat(indent.prefix)
 

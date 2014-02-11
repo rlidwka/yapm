@@ -685,8 +685,3 @@ module.exports.tokenize = function tokenizeJSON(input, options) {
 	return tokens
 }
 
-module.exports.analyze = function analyzeJSON(input, options) {
-	if (options == null) options = {}
-
-}
-

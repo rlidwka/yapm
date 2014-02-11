@@ -14,8 +14,8 @@ output: |
     description: 'A package manager for node (npm fork)',
     _id: 'yapm@1.1.0-1325',
     dist: {
-  	shasum: 'd5aa31c1ad00c1e7e57e07cea1b22c1806a47111',
-  },
+      shasum: 'd5aa31c1ad00c1e7e57e07cea1b22c1806a47111',
+    },
     _from: './zzz',
   }
 
