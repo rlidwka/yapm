@@ -3,9 +3,13 @@
   /*
    *  Main info
    */
+
   name: 'yapm',
-  version: '1.2.1', // upstream npm@1.3.26
   description: 'A package manager for node (npm fork)',
+
+  // upstream npm@1.4.0       commit debcfa564f
+  // upstream visionmedia/npm commit bbcb826fbe
+  version: '1.2.1',
 
   author: {
     // forked from npm, author: Isaac Z. Schlueter <i@izs.me>
@@ -79,7 +83,7 @@
     'node-gyp': '~0.12.2',
     'nopt': '~2.1.2',
     'npm-install-checks': '~1.0.0',
-    'npm-registry-client': '~0.3.6',
+    'npm-registry-client': '~0.4.0',
     'npm-user-validate': '0.0.3',
     'once': '~1.3.0',
     'opener': '~1.3.0',
