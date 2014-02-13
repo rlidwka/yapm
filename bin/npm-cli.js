@@ -13,8 +13,6 @@ if (typeof WScript !== "undefined") {
 }
 
 
-process.title = "npm"
-
 var log = require("npmlog")
 log.pause() // will be unpaused when config is loaded.
 log.info("it worked if it ends with", "ok")
@@ -29,6 +27,8 @@ var fs = require("graceful-fs")
   , shorthands = configDefs.shorthands
   , types = configDefs.types
   , nopt = require("nopt")
+
+process.title = npm.name
 
 // if npm is called as "npmg" or "npm_g", then
 // run in global mode.
@@ -55,7 +55,7 @@ if (conf.versions) {
   npm.argv = []
 }
 
-log.info("using", "npm@%s", npm.version)
+log.info("using", npm.name + "@%s", npm.version)
 log.info("using", "node@%s", process.version)
 
 // make sure that this version of node works with this version of npm.
