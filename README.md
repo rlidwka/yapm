@@ -4,9 +4,9 @@
 
 ### Our own changes
 
-  - full support for package.json5 and package.yaml file formats ([see details](https://github.com/rlidwka/yapm/blob/master/changes/package-yaml.md)).
-  - if package.json or any other json document is malformed, we show exactly where the error is
-  - a bunch of other minor changes ([see details](https://github.com/rlidwka/yapm/blob/master/changes/minor-fixes.md)).
+  - full support for package.json5 and package.yaml file formats ([docs](https://github.com/rlidwka/yapm/blob/master/changes/package-yaml.md), [#3869](https://github.com/npm/npm/issues/3869)).
+  - if package.json or any other json document is malformed, we show exactly where the error is ([docs](https://github.com/rlidwka/yapm/blob/master/changes/json-errors.md), [#3336](https://github.com/isaacs/npm/issues/3336), [#4482](https://github.com/npm/npm/issues/4482)).
+  - a bunch of other minor changes ([docs](https://github.com/rlidwka/yapm/blob/master/changes/minor-fixes.md)).
 
 ### Pulled from [visionmedia/npm](https://github.com/visionmedia/npm)
 
