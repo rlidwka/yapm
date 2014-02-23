@@ -9,7 +9,7 @@
 
   // upstream npm@1.4.4       commit 30b67836b5
   // upstream visionmedia/npm commit bbcb826fbe
-  version: '1.2.2',
+  version: '1.2.3',
 
   author: {
     // forked from npm, author: Isaac Z. Schlueter <i@izs.me>
