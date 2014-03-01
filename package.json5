@@ -114,6 +114,10 @@
     'jju': '^1.0.0',
     'yaml-update': '*',
 
+    // this module doesn't exist anywhere except for node_modules,
+    // listed so we could bundle it
+    'yapm-progress': '<0',
+
     // this dependencies are modified and different from what npm bundles
     // so they shouldn't be updated from npm, instead changes should be
     // pulled from npm/npm repo
@@ -183,6 +187,7 @@
     'uid-number',
     'which',
     'yaml-update',
+    'yapm-progress',
   ],
   devDependencies: {
     ronn: '~0.3.6',
