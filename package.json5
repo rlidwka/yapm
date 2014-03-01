@@ -111,7 +111,7 @@
     // our own deps
     'js-yaml': '*', // optional?
     'through': '*', // can be dropped in node 0.10+
-    'jju': '~0.6.1',
+    'jju': '^1.0.0',
     'yaml-update': '*',
 
     // this dependencies are modified and different from what npm bundles

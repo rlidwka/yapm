@@ -78,6 +78,10 @@ addTest('{ чйуач:1, щцкшчлм  : 4,}')
 addTest('{ qef-:1 }')
 addTest('{ $$$:1 , ___: 3}')
 addTest('{3:1,2:1}')
+addTest('{3.4e3:1}')
+addTest('{-3e3:1}')
+addTest('{+3e3:1}')
+addTest('{.3e3:1}')
 
 for (var i=0; i<200; i++) {
 	addTest('"' + String.fromCharCode(i) + '"', true)
@@ -138,7 +142,7 @@ for (var i=0; i<100; i++) {
 	var rnd = [1,2,3,4,5].map(function(x) {
 		x = ~~(Math.random()*str.length)
 		return str[x]
-	}).join('')	
+	}).join('')
 
 	try {
 		var x = parse(rnd)

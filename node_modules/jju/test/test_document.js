@@ -103,10 +103,10 @@ assert.equal(create("[0,]").set(1,{})+"", '[0,{},]')
 assert.equal(create("[    ]").set(0,{})+"", '[{}    ]')
 assert.equal(create("[ 0  ,  ]").set(1,{})+"", '[ 0  , {},  ]')
 assert.equal(create("[ 0   ]").set(1,{})+"", '[ 0, {}   ]')
-assert.equal(create("{}").set('y',{})+"", '{y:{}}')
+assert.equal(create("{}").set('y',{})+"", '{"y":{}}')
 assert.equal(create("{x:1}").set('y',{})+"", '{x:1,y:{}}')
 assert.equal(create("{x:1,}").set('y',{})+"", '{x:1,y:{},}')
-assert.equal(create("{    }").set('y',{})+"", '{y:{}    }')
+assert.equal(create("{    }").set('y',{})+"", '{"y":{}    }')
 assert.equal(create("{ x:1  ,  }").set('y',{})+"", '{ x:1  , y:{},  }')
 assert.equal(create("{ x:1   }").set('y',{})+"", '{ x:1, y:{}   }')
 
@@ -143,11 +143,11 @@ assert.deepEqual(create(" /*zz*/ [ ] /*xx*/ ").update([2,3,4])+"", ' /*zz*/ [2,3
 // update: objects
 assert.deepEqual(create("{x:1}").update({x:1,y:2,z:3})+"", '{x:1,y:2,z:3}')
 assert.deepEqual(create("{x:1}").update({x:2,z:3,t:4})+"", '{x:2,z:3,t:4}')
-assert.deepEqual(create("{}").update({x:1,y:2})+"", '{x:1,y:2}')
+assert.deepEqual(create("{}").update({x:1,y:2})+"", '{"x":1,"y":2}')
 assert.deepEqual(create("{x:1}").update({})+"", '{}')
 assert.deepEqual(create("{x:1,y:2}").update({x:1})+"", '{x:1}')
 assert.deepEqual(create(" /*zz*/ { x /*a*/ : /*b*/ 2 , y:3 , z //\n: 4  } /*xx*/ ").update({})+"", ' /*zz*/ {     } /*xx*/ ')
-assert.deepEqual(create(" /*zz*/ { } /*xx*/ ").update({x: 2, y: 3, z: 4})+"", ' /*zz*/ {x:2,y:3,z:4 } /*xx*/ ')
+assert.deepEqual(create(" /*zz*/ { } /*xx*/ ").update({x: 2, y: 3, z: 4})+"", ' /*zz*/ {"x":2,"y":3,"z":4 } /*xx*/ ')
 
 // remove trailing comma
 assert.deepEqual(create("{x:1,}").update({})+"", '{}')
@@ -163,7 +163,7 @@ assert.equal(create('{1:2}').update({ a: 1, b: [1,2], c: 3})+'', '{a:1,b:[1,2],c
 //assert.throws(function(){ jju.update(undefined, undefined) }, /root doc/)
 assert.equal(jju.update(undefined, undefined), '')
 assert.equal(jju.update(undefined, 42), '42')
-assert.equal(jju.update(undefined, {x: 5}), '{x:5}')
+assert.equal(jju.update(undefined, {x: 5}), '{"x":5}')
 
 /*
  *  real test
