@@ -47,11 +47,13 @@ test("sorting dependencies", function (t) {
 
       s.close()
 
-      t.same(Object.keys(resultAsJson.dependencies),
-        Object.keys(before.dependencies).sort())
+      // yapm: tests disabled since we don't provide this feature
 
-      t.notSame(Object.keys(resultAsJson.dependencies),
-        Object.keys(before.dependencies))
+      //t.same(Object.keys(resultAsJson.dependencies),
+      //  Object.keys(before.dependencies).sort())
+
+      //t.notSame(Object.keys(resultAsJson.dependencies),
+      //  Object.keys(before.dependencies))
 
       t.ok(resultAsJson.dependencies.underscore)
       t.ok(resultAsJson.dependencies.request)
