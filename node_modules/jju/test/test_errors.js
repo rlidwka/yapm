@@ -46,3 +46,10 @@ addTest('  ', 1, 3, /No data.*whitespace/)
 addTest('blah', 1, 1, /Unexpected token 'b'/)
 addTest('', 1, 1, /No data.*empty input/)
 
+try {
+	parse('{{{{{{{{{')
+} catch(err) {
+	var x = err.stack.match(/parseObject/g)
+	assert(!x || x.length < 2, "shouldn't blow up the stack with internal calls")
+}
+

@@ -99,7 +99,7 @@ function find_last_non_ws_token(tokens, begin, end) {
  * begin - the beginning of the object/array
  * end - last token of the last element (value or comma usually)
  */
-function detect_indent_style(tokens, is_array, is_inline, begin, end, stack_len) {
+function detect_indent_style(tokens, is_array, begin, end, level) {
 	var result = {
 		sep1: [],
 		sep2: [],
@@ -108,26 +108,22 @@ function detect_indent_style(tokens, is_array, is_inline, begin, end, stack_len)
 		newline: [],
 	}
 
-	if (tokens[end].type === 'separator' && tokens[end].stack.length !== stack_len+1 && tokens[end].raw !== ',') {
+	if (tokens[end].type === 'separator' && tokens[end].stack.length !== level+1 && tokens[end].raw !== ',') {
 		// either a beginning of the array (no last element) or other weird situation
 		//
 		// just return defaults
 		return result
 	}
 
-	var level = tokens[end+1].stack.length
+	//                              ' "key"  : "value"  ,'
+	// skipping last separator, we're now here        ^^
+	if (tokens[end].type === 'separator')
+		end = find_last_non_ws_token(tokens, begin, end - 1)
+	if (end === false) return result
 
-	if (!is_inline) {
-		//                              ' "key"  : "value"  ,'
-		// skipping last separator, we're now here        ^^
-		if (tokens[end].type === 'separator')
-			end = find_last_non_ws_token(tokens, begin, end - 1)
-		if (end === false) return result
-
-		//                              ' "key"  : "value"  ,'
-		// skipping value                          ^^^^^^^
-		while(tokens[end].stack.length > level) end--
-	}
+	//                              ' "key"  : "value"  ,'
+	// skipping value                          ^^^^^^^
+	while(tokens[end].stack.length > level) end--
 
 	if (!is_array) {
 		while(is_whitespace(tokens[end].type)) {
@@ -328,7 +324,7 @@ Document.prototype.set = function(path, value) {
 
 		} else {
 			var indent = pos2 !== false
-			           ? detect_indent_style(this._tokens, Array.isArray(data), true, pos_old[0], position[1] - 1, i)
+			           ? detect_indent_style(this._tokens, Array.isArray(data), pos_old[0], position[1] - 1, i)
 			           : {}
 			var newtokens = value_to_tokenlist(value, path, this._options, false, indent)
 		}
@@ -342,7 +338,7 @@ Document.prototype.set = function(path, value) {
 		assert(pos2 !== false)
 
 		var indent = pos2 !== false
-		           ? detect_indent_style(this._tokens, Array.isArray(data), false, position[0] + 1, pos2, i)
+		           ? detect_indent_style(this._tokens, Array.isArray(data), position[0] + 1, pos2, i)
 		           : {}
 
 		var newtokens = value_to_tokenlist(value, path, this._options, false, indent)

@@ -697,7 +697,20 @@ module.exports.parse = function parseJSON(input, options) {
 		}
 	}
 
-	return parse(input, options)
+	try {
+		return parse(input, options)
+	} catch(err) {
+		// jju is a recursive parser, so JSON.parse("{{{{{{{") could blow up the stack
+		//
+		// this catch is used to skip all those internal calls
+		if (err instanceof SyntaxError && err.row != null && err.column != null) {
+			var old_err = err
+			err = new SyntaxError(old_err.message)
+			err.column = old_err.column
+			err.row = old_err.row
+		}
+		throw err
+	}
 }
 
 module.exports.tokenize = function tokenizeJSON(input, options) {
