@@ -558,6 +558,14 @@ Set to true to run in "production" mode.
    local `npm install` without any arguments.
 2. Set the NODE_ENV="production" for lifecycle scripts.
 
+### progress
+
+* Default: true
+* Type: Boolean or `"always"`
+
+If false, never shows progress bar.  If `"always"` then always shows it.
+If true, then only prints it if colors are enabled.
+
 ### proprietary-attribs
 
 * Default: true
@@ -642,6 +650,15 @@ Only works if there is already a package.json file present.
 Dependencies saved to package.json using `--save`, `--save-dev` or
 `--save-optional` will be configured with an exact version rather than
 using npm's default semver range operator.
+
+### save-range
+
+* Default: '^'
+* Type: String
+
+Semver range operator used when dependencies are saved to package.json.
+
+Available options are: "~", "^", ">=", "<=", "=".
 
 ### save-optional
 
