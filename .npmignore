@@ -28,3 +28,4 @@ html/*.png
 
 /yapm-*.tgz
 /npm-test-*
+/changes/images

@@ -1,5 +1,11 @@
-A list of minor and non-essential differences from npm
-------------------------------------------------------
+A list of minor and differences from npm
+----------------------------------------
+
+### "prune" does not remove bundleDependencies
+
+If a certain dependency is specified as a bundled dependency and isn't mentioned anywhere else, `npm prune` will delete it, but `yapm prune` will not.
+
+See discussion in [npm/npm#4573](https://github.com/npm/npm/issues/4573) and [pull request](https://github.com/npm/read-installed/pull/18) against npm.
 
 ### git logging raised to http level
 
