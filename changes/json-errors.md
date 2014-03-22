@@ -3,6 +3,8 @@ Display presize location of errors in JSON documents
 
 Sometimes you have an invalid `package.json`. It might be a simple typo, it might be a filesystem issue, or something else.
 
+![screenshot](https://raw.github.com/rlidwka/yapm/master/changes/images/json-err.png)
+
 ### Use-case example
 
 ```js
