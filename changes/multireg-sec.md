@@ -3,9 +3,7 @@ Registry-specific configuraion: security fixes
 
 `npm` has one configuration for all registries. If you're using different registries, `npm` can leak your credentials from one registry to another. Also, user can be tricked to expose his credentials with a crafted command-line string.
 
-`yapm` has separate configurations for each registry, which means this flaw doesn't exist anymore.
-
-
+`yapm` has separate configurations for each registry, which means this flaw doesn't exist anymore. See [here](multireg-conf.md) for details about how it's done.
 
 It means that if you authenticated to one registry, but request another one, it can expose sensitive information to that registry. It's extremely important if you use multiple registries administered by different people.
 
