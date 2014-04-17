@@ -8,7 +8,6 @@
     - preserve formatting of package.json files
     - support for package.json5 and package.yaml files ([docs](https://github.com/rlidwka/yapm/blob/master/changes/package-yaml.md), [#3336](https://github.com/isaacs/npm/issues/3336), [#4482](https://github.com/npm/npm/issues/4482)).
     - if package.json or any other json document is malformed, show where the error is ([#3869](https://github.com/npm/npm/issues/3869)).
-    - configurable semver operator ([docs](https://github.com/rlidwka/yapm/blob/master/changes/semver-range.md), [#4587](https://github.com/npm/npm/issues/4587), [#4713](https://github.com/npm/npm/issues/4713)).
 
   - formatting changes:
     - logs have much more clean formatting

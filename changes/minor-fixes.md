@@ -25,3 +25,9 @@ Now you can do `yapm version micro` to increment third number.
 
 For the reasons for this see discussion named ['"PATCH" might be ambiguous'](https://github.com/mojombo/semver/issues/160) in semver repo.
 
+## configurable semver range operator
+
+We used to have [semver-range](https://github.com/rlidwka/yapm/commit/6258691db8bcecda37f6b0df8e539b4697631450) config value. It was added as [semver-prefix](https://github.com/npm/npm/commit/64eefdfe26bb27db8dc90e3ab5d27a5ef18a4470) to npm/npm later.
+
+So in yapm@1.4.0 `semver-range` is no longer present, please use `semver-prefix` instead.
+
