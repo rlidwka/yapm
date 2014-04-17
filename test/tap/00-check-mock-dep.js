@@ -9,7 +9,7 @@ process.on("uncaughtException", function(er) {
 var assert = require("assert")
 var semver = require("semver")
 var mock = require("npm-registry-mock/package.json").version
-var req = require("../../package.json").devDependencies["npm-registry-mock"]
+var req = require("jju").parse(require("fs").readFileSync(__dirname + "/../../package.json5")).devDependencies["npm-registry-mock"] // TODO: require('jju/register')
 assert(semver.satisfies(mock, req))
 console.log("ok")
 console.log("1..1")
