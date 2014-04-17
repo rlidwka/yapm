@@ -651,15 +651,6 @@ Dependencies saved to package.json using `--save`, `--save-dev` or
 `--save-optional` will be configured with an exact version rather than
 using npm's default semver range operator.
 
-### save-range
-
-* Default: '^'
-* Type: String
-
-Semver range operator used when dependencies are saved to package.json.
-
-Available options are: "~", "^", ">=", "<=", "=".
-
 ### save-optional
 
 * Default: false
@@ -678,11 +669,11 @@ Only works if there is already a package.json file present.
 * Default: '^'
 * Type: String
 
-Configure how versions of packages installed to a package.json file via 
+Configure how versions of packages installed to a package.json file via
 `--save` or `--save-dev` get prefixed.
 
 For example if a package has version `1.2.3`, by default it's version is
-set to `^1.2.3` which allows minor upgrades for that package, but after  
+set to `^1.2.3` which allows minor upgrades for that package, but after
 `npm config set save-prefix='~'` it would be set to `~1.2.3` which only allows
 patch upgrades.
 
