@@ -170,7 +170,7 @@ Return value is an object defining a programming style in which the document was
  * `new_value` - new value you want to set
  * `options` - parser or stringifier options, type: Object
  */
-jju.tokenize(text, new_value[, options])
+jju.update(text, new_value[, options])
 ```
 
 If you want to update a JSON document, here is the general approach:

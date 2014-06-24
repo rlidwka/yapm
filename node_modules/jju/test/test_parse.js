@@ -95,6 +95,13 @@ addTest('"\\v"')
 addTest('{null: 123}')
 addTest("{'null': 123}")
 
+assert.throws(function() {
+	parse('0o')
+})
+
+assert.strictEqual(parse('01234567'), 342391)
+assert.strictEqual(parse('0o1234567'), 342391)
+
 // undef
 assert.strictEqual(parse(undefined), undefined)
 

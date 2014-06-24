@@ -31,6 +31,7 @@ addTest('\n\u2029;', 3, 1)
 addTest('[\n1\n,\n;', 4, 1)
 addTest('{\n;', 2, 1)
 addTest('{\n1\n:\n;', 4, 1)
+addTest('.e3', 1, 3, /"\.e3"/)
 
 // line continuations
 addTest('["\\\n",\n;', 3, 1)
