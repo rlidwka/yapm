@@ -92,13 +92,13 @@ type-string:
   input: >
     ""
 
-type-array:
+type-object:
   type: basic
   output: {}
   input: >
     {}
 
-type-object:
+type-array:
   type: basic
   output: []
   input: >
