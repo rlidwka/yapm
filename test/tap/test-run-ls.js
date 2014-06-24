@@ -1,8 +1,9 @@
+require("jju").utils.register()
 var common = require("../common-tap.js")
 var test = require("tap").test
 var path = require("path")
 var cwd = path.resolve(__dirname, "..", "..")
-var testscript = require("../../package.json").scripts.test
+var testscript = require("../../package.json5").scripts.test
 var tsregexp = testscript.replace(/([\[\.\*\]])/g, "\\$1")
 
 test("default", function (t) {
