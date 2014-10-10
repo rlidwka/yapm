@@ -1,4 +1,6 @@
+require("jju").utils.register()
 var fs = require("fs")
+var me = require("../../package.json5").name
 
 if (process.argv[2] === "write-builtin") {
   var pid = process.argv[3]
@@ -44,7 +46,7 @@ test("install npm into first folder", function (t) {
 })
 
 test("write npmrc file", function (t) {
-  common.npm(["explore", "npm", "-g",
+  common.npm(["explore", me, "-g",
               "--prefix=" + folder + "/first",
               "--cache=" + folder + "/cache",
               "--tmp=" + folder + "/tmp",
@@ -73,7 +75,7 @@ test("use first npm to install second npm", function (t) {
     var root = so.trim()
     t.ok(fs.statSync(root).isDirectory())
 
-    var bin = path.resolve(root, "npm/bin/npm-cli.js")
+    var bin = path.resolve(root, me, "bin/npm-cli.js")
     spawn( node
          , [ bin
            , "install", npm
@@ -108,8 +110,8 @@ test("verify that the builtin config matches", function (t) {
       if (er) throw er
       t.equal(code, 0)
       var secondRoot = so.trim()
-      var firstRc = path.resolve(firstRoot, "npm", "npmrc")
-      var secondRc = path.resolve(secondRoot, "npm", "npmrc")
+      var firstRc = path.resolve(firstRoot, me, "npmrc")
+      var secondRc = path.resolve(secondRoot, me, "npmrc")
       var firstData = fs.readFileSync(firstRc, "utf8")
       var secondData = fs.readFileSync(secondRc, "utf8")
       t.equal(firstData, secondData)

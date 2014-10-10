@@ -165,7 +165,6 @@
     'printf',
     'read',
     'readable-stream',
-    'realize-package-specifier',
     'request',
     'retry',
     'rimraf',
@@ -223,6 +222,9 @@
     // we use graceful-fs@2.0.3 here
     // TODO: this really needs some fixing
     'graceful-fs',
+
+    // changes to support package.yaml's
+    'realize-package-specifier',
   ],
   devDependencies: {
     'marked': '~0.3.2',
