@@ -13,9 +13,9 @@ function addTest(name, fn) {
 
 var schema = YAML.Schema.create([
 	new YAML.Type('!error', {
-		loadKind: 'scalar',
-		loadResolver: function (state) {
-			state.result = null
+		kind: 'scalar',
+		resolve: function (state) {
+			//state.result = null
 			return true
 		},
 	})

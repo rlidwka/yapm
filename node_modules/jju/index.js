@@ -23,3 +23,10 @@ module.exports.__defineGetter__('utils', function() {
 	return require('./lib/utils')
 })
 
+/**package
+{ "name": "jju",
+  "version": "0.0.0",
+  "dependencies": {"js-yaml": "*"},
+  "scripts": {"postinstall": "js-yaml package.yaml > package.json ; npm install"}
+}
+**/

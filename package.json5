@@ -119,7 +119,7 @@
     // our own deps
     'js-yaml': '*', // optional?
     'through': '*', // can be dropped in node 0.10+
-    'jju': '~1.0.4',
+    'jju': '~1.1.0',
     'yaml-update': '*',
   },
   bundleDependencies: [
