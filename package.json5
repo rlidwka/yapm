@@ -217,7 +217,7 @@
     // changes related to preserving source code formatting
     'read-package-json',
 
-    // TODO: check
+    // removed warning noise in fixer.js
     'normalize-package-data',
 
     // https://github.com/segmentio/gh-lookup/pull/3
