@@ -2,7 +2,8 @@ var fs = require("fs")
 var path = require("path")
 var test = require("tap").test
 
-var manifest = require("../../package.json")
+require("jju").utils.register()
+var manifest = require("../../package.json5")
 var deps = Object.keys(manifest.dependencies)
 var dev = Object.keys(manifest.devDependencies)
 var bundled = manifest.bundleDependencies

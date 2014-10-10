@@ -148,7 +148,7 @@ man/man7/%.7: doc/misc/%.md scripts/doc-build.sh package.json5
 	scripts/doc-build.sh $< $@
 
 
-doc/misc/npm-index.md: scripts/index-build.js package.json
+doc/misc/npm-index.md: scripts/index-build.js package.json5
 	node scripts/index-build.js > $@
 
 
