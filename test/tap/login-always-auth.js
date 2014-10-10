@@ -11,7 +11,7 @@ var outfile = path.resolve(__dirname, "_npmrc")
 var responses = {
   "Username" : "u\n",
   "Password" : "p\n",
-  "Public Email": "u@p.me\n"
+  "Email": "u@p.me\n"
 }
 
 function mocks(server) {
