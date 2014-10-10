@@ -143,27 +143,18 @@ man/man5/%.5: doc/files/%.md scripts/doc-build.sh package.json5
 	@[ -d man/man5 ] || mkdir -p man/man5
 	scripts/doc-build.sh $< $@
 
-<<<<<<< HEAD
-doc/misc/npm-index.md: scripts/index-build.js package.json5
-=======
-man/man7/%.7: doc/misc/%.md scripts/doc-build.sh package.json
+man/man7/%.7: doc/misc/%.md scripts/doc-build.sh package.json5
 	@[ -d man/man7 ] || mkdir -p man/man7
 	scripts/doc-build.sh $< $@
 
 
 doc/misc/npm-index.md: scripts/index-build.js package.json
->>>>>>> 2620216da485e7c6740c74611f2491f728816517
 	node scripts/index-build.js > $@
 
 
-<<<<<<< HEAD
-man/man7/%.7: doc/misc/%.md scripts/doc-build.sh package.json5
-	@[ -d man/man7 ] || mkdir -p man/man7
-=======
 # html/doc depends on html/partial/doc
 html/doc/%.html: html/partial/doc/%.html
 	@[ -d html/doc ] || mkdir -p html/doc
->>>>>>> 2620216da485e7c6740c74611f2491f728816517
 	scripts/doc-build.sh $< $@
 
 html/doc/README.html: html/partial/doc/README.html
