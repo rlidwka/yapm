@@ -79,7 +79,6 @@
     'github-url-from-git': '~1.4.0',
     'github-url-from-username-repo': '~1.0.2',
     'glob': '~4.0.5',
-    'graceful-fs': '~3.0.0',
     'inflight': '~1.0.4',
     'inherits': '~2.0.1',
     'lockfile': '~1.0.0',
@@ -145,7 +144,6 @@
     'github-url-from-git',
     'github-url-from-username-repo',
     'glob',
-    'graceful-fs',
     'inflight',
     'inherits',
     'jju',
@@ -222,6 +220,10 @@
 
     // https://github.com/segmentio/gh-lookup/pull/3
     'gh-lookup',
+
+    // we use graceful-fs@2.0.3 here
+    // TODO: this really needs some fixing
+    'graceful-fs',
   ],
   devDependencies: {
     'marked': '~0.3.2',
