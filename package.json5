@@ -113,7 +113,6 @@
 
     // visionmedia/npm deps
     'chalk': '~0.4.0',
-    'gh-lookup': '~0.4.0',
     'printf': '~0.1.2',
 
     // our own deps
@@ -143,7 +142,6 @@
     'fs-write-stream-atomic',
     'fstream',
     'fstream-npm',
-    'gh-lookup',
     'github-url-from-git',
     'github-url-from-username-repo',
     'glob',
@@ -221,6 +219,9 @@
 
     // TODO: check
     'normalize-package-data',
+
+    // https://github.com/segmentio/gh-lookup/pull/3
+    'gh-lookup',
   ],
   devDependencies: {
     'marked': '~0.3.2',
