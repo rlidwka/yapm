@@ -24,8 +24,9 @@ same.
 
 ### npmrc Files
 
-The three relevant files are:
+The four relevant files are:
 
+* per-project config file (/path/to/my/project/.npmrc)
 * per-user config file (~/.npmrc)
 * global config file ($PREFIX/npmrc)
 * npm builtin config file (/path/to/npm/npmrc)
@@ -49,6 +50,7 @@ The following shorthands are parsed on the command-line:
 * `-dd`, `--verbose`: `--loglevel verbose`
 * `-ddd`: `--loglevel silly`
 * `-g`: `--global`
+* `-C`: `--prefix`
 * `-l`: `--long`
 * `-m`: `--message`
 * `-p`, `--porcelain`: `--parseable`
@@ -144,6 +146,15 @@ Set to `null` to only allow "known" registrars, or to a specific CA cert
 to trust only that specific signing authority.
 
 See also the `strict-ssl` config.
+
+### cafile
+
+* Default: `null`
+* Type: path
+
+A path to a file containing one or multiple Certificate Authority signing
+certificates. Similar to the `ca` setting, but allows for multiple CA's, as
+well as for the CA information to be stored in a file on disk.
 
 ### cache
 
@@ -242,12 +253,6 @@ set.
 * Type: path
 
 The command to run for `npm edit` or `npm config edit`.
-
-### email
-
-The email of the logged-in user.
-
-Set by the `npm adduser` command.  Should not be set explicitly.
 
 ### engine-strict
 
@@ -415,6 +420,14 @@ The value `npm init` should use by default for the package author's homepage.
 
 The value `npm init` should use by default for the package license.
 
+### init.version
+
+* Default: "0.0.0"
+* Type: semver
+
+The value that `npm init` should use by default for the package
+version number, if not already set in package.json.
+
 ### json
 
 * Default: false
@@ -459,9 +472,9 @@ to the npm registry.  Must be IPv4 in versions of Node prior to 0.12.
 
 ### loglevel
 
-* Default: "http"
+* Default: "warn"
 * Type: String
-* Values: "silent", "win", "error", "warn", "http", "info", "verbose", "silly"
+* Values: "silent", "error", "warn", "http", "info", "verbose", "silly"
 
 What level of logs to report.  On failure, *all* logs are written to
 `npm-debug.log` in the current working directory.
@@ -677,6 +690,17 @@ set to `^1.2.3` which allows minor upgrades for that package, but after
 `npm config set save-prefix='~'` it would be set to `~1.2.3` which only allows
 patch upgrades.
 
+### scope
+
+* Default: ""
+* Type: String
+
+Associate an operation with a scope for a scoped registry. Useful when logging
+in to a private registry for the first time:
+`npm login --scope=@organization --registry=registry.organization.com`, which
+will cause `@organization` to be mapped to the registry for future installation
+of packages specified according to the pattern `@organization/package`.
+
 ### searchopts
 
 * Default: ""
@@ -799,13 +823,6 @@ instead of complete help when doing `npm-help(1)`.
 * Type: String or Number
 
 The UID to set to when running package scripts as root.
-
-### username
-
-* Default: null
-* Type: String
-
-The username on the npm registry.  Set with `npm adduser`
 
 ### userconfig
 

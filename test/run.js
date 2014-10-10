@@ -7,7 +7,7 @@ var path = require("path")
   , testdir = __dirname
   , fs = require("graceful-fs")
   , npmpkg = path.dirname(testdir)
-  , npmcli = path.join(__dirname, "bin", "npm-cli.js")
+  , npmcli = path.resolve(npmpkg, "bin", "npm-cli.js")
   , binName = 'yapm'
 
 var temp = process.env.TMPDIR
@@ -64,7 +64,7 @@ function prefix (content, pref) {
 }
 
 var execCount = 0
-function exec (cmd, shouldFail, cb) {
+function exec (cmd, cwd, shouldFail, cb) {
   if (typeof shouldFail === "function") {
     cb = shouldFail, shouldFail = false
   }
@@ -82,7 +82,10 @@ function exec (cmd, shouldFail, cb) {
   cmd = cmd.replace(/^npm /, npmReplace + " ")
   cmd = cmd.replace(/^node /, nodeReplace + " ")
 
-  child_process.exec(cmd, {env: env}, function (er, stdout, stderr) {
+  console.error("$$$$$$ cd %s; PATH=%s %s", cwd, env.PATH, cmd)
+
+  child_process.exec(cmd, {cwd: cwd, env: env}, function (er, stdout, stderr) {
+    console.error("$$$$$$ after command", cmd, cwd)
     if (stdout) {
       console.error(prefix(stdout, " 1> "))
     }
@@ -103,10 +106,8 @@ function exec (cmd, shouldFail, cb) {
 }
 
 function execChain (cmds, cb) {
-  chain(cmds.reduce(function (l, r) {
-    return l.concat(r)
-  }, []).map(function (cmd) {
-    return [exec, cmd]
+  chain(cmds.map(function (args) {
+    return [exec].concat(args)
   }), cb)
 }
 
@@ -119,9 +120,8 @@ function flatten (arr) {
 function setup (cb) {
   cleanup(function (er) {
     if (er) return cb(er)
-    execChain([ "node \""+path.resolve(npmpkg, "bin", "npm-cli.js")
-              + "\" install \""+npmpkg+"\""
-              , "npm config set package-config:foo boo"
+    execChain([ [ "node \""+npmcli+"\" install \""+npmpkg+"\"", root ],
+                [ "npm config set package-config:foo boo",  root ]
               ], cb)
   })
 }
@@ -135,6 +135,7 @@ function main (cb) {
   failures = 0
 
   process.chdir(testdir)
+  var base = path.resolve(root, path.join("lib", "node_modules"))
 
   // get the list of packages
   var packages = fs.readdirSync(path.resolve(testdir, "packages"))
@@ -151,17 +152,17 @@ function main (cb) {
       packagesToRm.push("npm")
     }
 
-    chain
-      ( [ setup
-        , [ exec, "npm install "+npmpkg ]
+    chain(
+        [ setup
+        , [ exec, "npm install "+npmpkg, testdir ]
         , [ execChain, packages.map(function (p) {
-              return "npm install packages/"+p
+              return [ "npm install packages/"+p, testdir ]
             }) ]
         , [ execChain, packages.map(function (p) {
-              return "npm test "+p
+              return [ "npm test -ddd", path.resolve(base, p) ]
             }) ]
         , [ execChain, packagesToRm.map(function (p) {
-              return "npm rm " + p
+              return [ "npm rm "+p, root ]
             }) ]
         , installAndTestEach
         ]
@@ -172,15 +173,15 @@ function main (cb) {
   function installAndTestEach (cb) {
     var thingsToChain = [
         setup
-        , [ execChain, packages.map(function (p) {
-              return [ "npm install packages/"+p
-                     , "npm test "+p
-                     , "npm rm "+p ]
-            }) ]
+        , [ execChain, flatten(packages.map(function (p) {
+              return [ [ "npm install packages/"+p, testdir ]
+                     , [ "npm test", path.resolve(base, p) ]
+                     , [ "npm rm "+p, root ] ]
+            })) ]
       ]
     if (process.platform !== "win32") {
       // Windows can't handle npm rm npm due to file-in-use issues.
-      thingsToChain.push([exec, "npm rm npm"])
+      thingsToChain.push([exec, "npm rm npm", testdir])
     }
 
     chain(thingsToChain, cb)
