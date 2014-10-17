@@ -144,6 +144,7 @@
     'github-url-from-git',
     'github-url-from-username-repo',
     'glob',
+    'graceful-fs',
     'inflight',
     'inherits',
     'jju',
@@ -219,10 +220,6 @@
 
     // https://github.com/segmentio/gh-lookup/pull/3
     'gh-lookup',
-
-    // we use graceful-fs@2.0.3 here
-    // TODO: this really needs some fixing
-    'graceful-fs',
 
     // changes to support package.yaml's
     'realize-package-specifier',
