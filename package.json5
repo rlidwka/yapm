@@ -181,8 +181,9 @@
     'write-file-atomic',
     'yaml-update',
 
-    // this module doesn't exist anywhere except for node_modules
+    // these modules don't exist anywhere except for node_modules
     'yapm-progress',
+    'package-yaml',
 
     /*
      * These dependencies are modified and different from what npm bundles

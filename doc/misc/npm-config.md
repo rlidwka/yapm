@@ -878,6 +878,15 @@ The program to use to view help content.
 
 Set to `"browser"` to view html help content in the default web browser.
 
+### yapm-formats
+
+* Default: "yaml,json5,json,indexjs"
+* Type: string
+
+Comma-separated array of supported package descriptor formats.
+
+You can write your own plugin and insert it into this list.
+
 ## SEE ALSO
 
 * npm-config(1)

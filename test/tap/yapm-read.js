@@ -1,7 +1,8 @@
 var test = require('tap').test
 
 var yaml = require('js-yaml')
-  , fs = require('fs')
+var fs = require('fs')
+var pkgyaml = require('package-yaml')
 
 var read = fs.readFileSync
   , write = fs.writeFileSync
@@ -30,15 +31,8 @@ var J5str = '{test:123,something:456}'
 require('../..')
 
 // no config file exists just yet
-test('nothing#sync', function(t) {
-  t.throws(function() {
-    console.log(fs.readFileSync('package.json'))
-  })
-  t.end()
-})
-
 test('nothing#async', function(t) {
-  fs.readFile('package.json', function(err) {
+  pkgyaml.read('.', function(err) {
     t.ok(err)
     t.end()
   })
@@ -50,29 +44,10 @@ test('json#prepare', function(t) {
   t.end()
 })
 
-test('json#sync', function(t) {
-  t.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), Y)
-  t.end()
-})
-
 test('json#async', function(t) {
-  fs.readFile('package.json', 'utf8', function(err, data) {
+  pkgyaml.read('.', function(err, data) {
     t.ok(!err)
-    t.deepEqual(JSON.parse(data), Y)
-    t.end()
-  })
-})
-
-// without encoding
-test('json#sync2', function(t) {
-  t.deepEqual(JSON.parse(fs.readFileSync('package.json').toString('utf8')), Y)
-  t.end()
-})
-
-test('json#async2', function(t) {
-  fs.readFile('package.json', function(err, data) {
-    t.ok(!err)
-    t.deepEqual(JSON.parse(data.toString('utf8')), Y)
+    t.deepEqual(data, Y)
     t.end()
   })
 })
@@ -84,15 +59,10 @@ test('both#prepare', function(t) {
   t.end()
 })
 
-test('both#sync', function(t) {
-  t.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), Y)
-  t.end()
-})
-
 test('both#async', function(t) {
-  fs.readFile('package.json', 'utf8', function(err, data) {
+  pkgyaml.read('.', function(err, data) {
     t.ok(!err)
-    t.deepEqual(JSON.parse(data), Y)
+    t.deepEqual(data, Y)
     t.end()
   })
 })
@@ -103,44 +73,23 @@ test('yaml#prepare', function(t) {
   t.end()
 })
 
-test('yaml#sync', function(t) {
-  t.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), Y)
-  t.end()
-})
-
 test('yaml#async', function(t) {
-  fs.readFile('package.json', 'utf8', function(err, data) {
+  pkgyaml.read('.', function(err, data) {
     t.ok(!err)
-    t.deepEqual(JSON.parse(data), Y)
+    t.deepEqual(data, Y)
     t.end()
   })
 })
 
 test('yaml#doubleerr', function(t) {
   var count = 0
-  fs.readFile('package.yaml/package.json', function(err) {
+  fs.readFile('package.yaml/', function(err) {
     t.equal(err.code, 'ENOTDIR')
     if (count++) {
       throw new Error('doubleerr callback invocation')
     }
     t.end()
   })
-})
-
-test('yaml#doubleerr', function(t) {
-  var count = 0
-  fs.readFile('package.yaml/package.json', function(err) {
-    t.equal(err.code, 'ENOTDIR')
-    if (count++) {
-      throw new Error('doubleerr callback invocation')
-    }
-    t.end()
-  })
-})
-
-test('json5+yaml#sync', function(t) {
-  t.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), Y)
-  t.end()
 })
 
 test('json5#prepare', function(t) {
@@ -149,15 +98,10 @@ test('json5#prepare', function(t) {
   t.end()
 })
 
-test('json5#sync', function(t) {
-  t.deepEqual(JSON.parse(fs.readFileSync('package.json', 'utf8')), J5)
-  t.end()
-})
-
 test('json5#async', function(t) {
-  fs.readFile('package.json', 'utf8', function(err, data) {
+  pkgyaml.read('.', function(err, data) {
     t.ok(!err)
-    t.deepEqual(JSON.parse(data), J5)
+    t.deepEqual(data, J5)
     t.end()
   })
 })
