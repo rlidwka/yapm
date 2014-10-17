@@ -25,6 +25,7 @@ npm-debug.log
 /yapm-*.tgz
 /npm-test-*
 /node_modules/npm-registry-client/test/fixtures
+/test/fixtures/config/userconfig-with-gc
 /node_modules/npm-registry-couchapp
 *.pyc
 .building_ronn

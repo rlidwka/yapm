@@ -11,8 +11,6 @@ var pkg = path.resolve(__dirname, "peer-deps")
 var desiredResultsPath = path.resolve(pkg, "desired-ls-results.json")
 
 test("installs the peer dependency directory structure", function (t) {
-  t.plan(1)
-
   mr(common.port, function (s) {
     setup(function (err) {
       if (err) return t.fail(err)

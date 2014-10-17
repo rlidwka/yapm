@@ -518,7 +518,7 @@ Any "%s" in the message will be replaced with the version number.
 * Default: process.version
 * Type: semver or false
 
-The node version to use when checking package's "engines" hash.
+The node version to use when checking a package's `engines` map.
 
 ### npat
 
@@ -540,7 +540,7 @@ usage.
 * Default: true
 * Type: Boolean
 
-Attempt to install packages in the `optionalDependencies` hash.  Note
+Attempt to install packages in the `optionalDependencies` object.  Note
 that if these packages fail to install, the overall installation
 process is not aborted.
 
@@ -626,8 +626,8 @@ Remove failed installs.
 
 Save installed packages to a package.json file as dependencies.
 
-When used with the `npm rm` command, it removes it from the dependencies
-hash.
+When used with the `npm rm` command, it removes it from the `dependencies`
+object.
 
 Only works if there is already a package.json file present.
 
@@ -648,10 +648,10 @@ bundledDependencies list.
 * Default: false
 * Type: Boolean
 
-Save installed packages to a package.json file as devDependencies.
+Save installed packages to a package.json file as `devDependencies`.
 
 When used with the `npm rm` command, it removes it from the
-devDependencies hash.
+`devDependencies` object.
 
 Only works if there is already a package.json file present.
 
@@ -673,7 +673,7 @@ Save installed packages to a package.json file as
 optionalDependencies.
 
 When used with the `npm rm` command, it removes it from the
-devDependencies hash.
+`devDependencies` object.
 
 Only works if there is already a package.json file present.
 
@@ -864,8 +864,8 @@ Only relevant when specified explicitly on the command line.
 * Default: false
 * Type: boolean
 
-If true, output the npm version as well as node's `process.versions`
-hash, and exit successfully.
+If true, output the npm version as well as node's `process.versions` map, and
+exit successfully.
 
 Only relevant when specified explicitly on the command line.
 

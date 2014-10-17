@@ -7,7 +7,7 @@
   name: 'yapm',
   description: 'A package manager for node (npm fork)',
 
-  // upstream npm@2.1.4       commit 2620216da4
+  // upstream npm@2.1.5       commit 7b7b55eebc
   // upstream visionmedia/npm commit bbcb826fbe
   version: '2.0.0',
 
@@ -20,6 +20,7 @@
   /*
    *  WWW Links
    */
+
   homepage: 'https://npmjs.org/doc/',
   repository: {
     type: 'git',
@@ -62,7 +63,7 @@
     'ansicolors': '~0.3.2',
     'ansistyles': '~0.1.3',
     'async-some': '~1.0.1',
-    'archy': '0',
+    'archy': '~1.0.0',
     'block-stream': '0.0.7',
     'char-spinner': '~1.0.1',
     'child-process-close': '~0.1.1',
@@ -70,6 +71,7 @@
     'chownr': '0',
     'cmd-shim': '~2.0.1',
     'columnify': '~1.2.1',
+    'config-chain': '~1.1.8',
     'dezalgo': '~1.0.1',
     'editor': '~0.1.0',
     'fs-vacuum': '~1.2.1',
@@ -78,9 +80,11 @@
     'fstream-npm': '~1.0.0',
     'github-url-from-git': '~1.4.0',
     'github-url-from-username-repo': '~1.0.2',
-    'glob': '~4.0.5',
+    'glob': '~4.0.6',
+    'graceful-fs': '~3.0.4',
     'inflight': '~1.0.4',
     'inherits': '~2.0.1',
+    'ini': '~1.3.0',
     'lockfile': '~1.0.0',
     'lru-cache': '~2.5.0',
     'minimatch': '~1.0.0',
@@ -90,17 +94,17 @@
     'npm-cache-filename': '~1.0.1',
     'npm-install-checks': '~1.0.2',
     'npm-package-arg': '~2.1.3',
-    'npm-user-validate': '~0.1.0',
-    'once': '~1.3.0',
-    'opener': '~1.3.0',
+    'npm-user-validate': '~0.1.1',
+    'once': '~1.3.1',
+    'opener': '~1.4.0',
     'osenv': '~0.1.0',
     'path-is-inside': '~1.0.0',
     'read': '~1.0.4',
-    'request': '~2.44.0',
-    'retry': '~0.6.0',
+    'request': '~2.45.0',
+    'retry': '~0.6.1',
     'rimraf': '~2.2.8',
-    'semver': '~4.0.0',
-    'sha': '~1.2.1',
+    'semver': '~4.1.0',
+    'sha': '~1.3.0',
     'slide': '~1.1.6',
     'sorted-object': '~1.0.0',
     'tar': '~1.0.1',
@@ -135,6 +139,7 @@
     'chownr',
     'cmd-shim',
     'columnify',
+    'config-chain',
     'dezalgo',
     'editor',
     'fs-vacuum',
@@ -206,9 +211,6 @@
     // https://github.com/npm/read-installed/pull/18
     'read-installed',
 
-    // a LOT of changes, module isn't well decoupled from npm
-    'npmconf',
-
     // module was rewritten completely, thanks to @visionmedia
     'npmlog',
 
@@ -227,10 +229,10 @@
   devDependencies: {
     'marked': '~0.3.2',
     'marked-man': '~0.1.4',
-    'nock': '~0.34.1',
+    'nock': '~0.48.1',
     'npm-registry-couchapp': '~2.6.2',
     'npm-registry-mock': '~0.6.3',
-    'require-inject': '~1.0.0',
+    'require-inject': '~1.1.0',
     'tap': '~0.4.12',
   },
 
