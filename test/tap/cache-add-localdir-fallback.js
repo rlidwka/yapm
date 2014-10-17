@@ -20,6 +20,12 @@ var realizePackageSpecifier = requireInject("realize-package-specifier", {
         case path.resolve("dir-no-package/package.json"):
           cb(new Error("ENOENT"))
           break
+        case path.resolve("dir-no-package/package.json5"):
+          cb(new Error("ENOENT"))
+          break
+        case path.resolve("dir-no-package/package.yaml"):
+          cb(new Error("ENOENT"))
+          break
         case path.resolve("dir-with-package"):
           cb(null, { isDirectory: function () { return true } })
           break
