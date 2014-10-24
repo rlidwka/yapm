@@ -7,7 +7,7 @@
   name: 'yapm',
   description: 'A package manager for node (npm fork)',
 
-  // upstream npm@2.1.5       commit 7b7b55eebc
+  // upstream npm@2.1.6       commit 19022ff227
   // upstream visionmedia/npm commit bbcb826fbe
   version: '2.0.0',
 
@@ -77,7 +77,7 @@
     'fs-vacuum': '~1.2.1',
     'fs-write-stream-atomic': '~1.0.2',
     'fstream': '~1.0.2',
-    'fstream-npm': '~1.0.0',
+    'fstream-npm': '~1.0.1',
     'github-url-from-git': '~1.4.0',
     'github-url-from-username-repo': '~1.0.2',
     'glob': '~4.0.6',
@@ -100,7 +100,7 @@
     'osenv': '~0.1.0',
     'path-is-inside': '~1.0.0',
     'read': '~1.0.4',
-    'request': '~2.45.0',
+    'request': '~2.46.0',
     'retry': '~0.6.1',
     'rimraf': '~2.2.8',
     'semver': '~4.1.0',
