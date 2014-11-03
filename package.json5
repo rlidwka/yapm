@@ -93,7 +93,6 @@
     'nopt': '~3.0.1',
     'npm-cache-filename': '~1.0.1',
     'npm-install-checks': '~1.0.2',
-    'npm-package-arg': '~2.1.3',
     'npm-user-validate': '~0.1.1',
     'once': '~1.3.1',
     'opener': '~1.4.0',
@@ -162,7 +161,6 @@
     'nopt',
     'npm-cache-filename',
     'npm-install-checks',
-    'npm-package-arg',
     'npm-user-validate',
     'once',
     'opener',
@@ -207,6 +205,9 @@
 
     // yapm-progress hooks
     'npm-registry-client',
+
+    // github semver
+    'npm-package-arg',
 
     // https://github.com/npm/read-installed/pull/18
     'read-installed',
