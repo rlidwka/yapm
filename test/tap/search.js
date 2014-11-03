@@ -117,12 +117,12 @@ var searches = [
   {
     term: "f36b6a6123da50959741e2ce4d634f96ec668c56",
     description: "non-regex",
-    location: 241
+    location: 3
   },
   {
     term: "/f36b6a6123da50959741e2ce4d634f96ec668c56/",
     description: "regex",
-    location: 241
+    location: 3
   }
 ]
 
