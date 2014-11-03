@@ -1,3 +1,4 @@
+require('jju').utils.register()
 var fs = require("fs")
 var path = require("path")
 
@@ -76,7 +77,7 @@ test("npm publish should honor scoping", function (t) {
       var current = parsed.versions["1.2.5"]
       t.equal(
         current._npmVersion,
-        require(path.resolve(__dirname, "../../package.json")).version,
+        require(path.resolve(__dirname, "../../package.json5")).version,
         "npm version is correct"
       )
 
