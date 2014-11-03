@@ -135,6 +135,7 @@ searches.forEach(function(search) {
         "--registry", common.registry,
         "--cache", cache,
         "--loglevel", "silent",
+        "--progress", "false",
         "--color", "always"
       ],
       EXEC_OPTS,
