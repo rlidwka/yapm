@@ -7,7 +7,7 @@
   name: 'yapm',
   description: 'A package manager for node (npm fork)',
 
-  // upstream npm@2.1.6       commit 19022ff227
+  // upstream npm@2.1.8       commit 07c5f34e45
   // upstream visionmedia/npm commit bbcb826fbe
   version: '2.0.0',
 
@@ -74,7 +74,7 @@
     'config-chain': '~1.1.8',
     'dezalgo': '~1.0.1',
     'editor': '~0.1.0',
-    'fs-vacuum': '~1.2.1',
+    'fs-vacuum': '~1.2.2',
     'fs-write-stream-atomic': '~1.0.2',
     'fstream': '~1.0.2',
     'fstream-npm': '~1.0.1',
@@ -99,16 +99,16 @@
     'osenv': '~0.1.0',
     'path-is-inside': '~1.0.0',
     'read': '~1.0.4',
-    'request': '~2.46.0',
+    'request': '~2.47.0',
     'retry': '~0.6.1',
     'rimraf': '~2.2.8',
     'semver': '~4.1.0',
     'sha': '~1.3.0',
     'slide': '~1.1.6',
     'sorted-object': '~1.0.0',
-    'tar': '~1.0.1',
+    'tar': '~1.0.2',
     'text-table': '~0.2.0',
-    'uid-number': '0.0.5',
+    'uid-number': '0.0.6',
     'which': '1',
     'wrappy': '~1.0.1',
     'write-file-atomic': '~1.1.0',
