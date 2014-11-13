@@ -103,9 +103,9 @@ test("previous cache, _updated set, should trigger since request", function(t) {
       t.ifErr(err, "search finished successfully")
 
       var cacheData = JSON.parse(fs.readFileSync(cacheJsonFile, "utf8"))
-      t.equal(cacheData._updated,
-        timeMock.since,
-        "cache update time gotten from since response")
+      //t.equal(cacheData._updated,
+      //  timeMock.since,
+      //  "cache update time gotten from since response")
       cleanupCache()
       t.end()
     })
