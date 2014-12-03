@@ -5,6 +5,7 @@ node_js:
 env:
   - DEPLOY_VERSION=testing
 before_install:
-  - "npm install ."
+  - "npm config set spin false"
+  - "npm install -g npm@^2"
   - "sudo mkdir -p /var/run/couchdb"
-script: "./cli.js run-script tap"
+script: "./cli.js run-script test-all"

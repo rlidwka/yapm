@@ -20,6 +20,7 @@ var temp = process.env.TMPDIR
 temp = path.resolve(temp, "npm-test-" + process.pid)
 
 var root = path.resolve(temp, "root")
+  , cache = path.resolve(temp, "npm_cache")
 
 var failures = 0
   , mkdir = require("mkdirp")
@@ -48,6 +49,7 @@ env.npm_config_global = "true"
 env.npm_config_npat = "false"
 env.PATH = pathEnv.join(pathEnvSplit)
 env.NODE_PATH = path.join(root, "node_modules")
+env.npm_config_cache = cache
 
 
 
