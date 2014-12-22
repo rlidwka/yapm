@@ -1,3 +1,107 @@
+### v2.1.16 (2014-12-22):
+
+* [`a4e4e33`](https://github.com/npm/npm/commit/a4e4e33edb35c68813f04bf42bdf933a6f727bcd)
+  [#6987](https://github.com/npm/npm/issues/6987) `read-installed@3.1.5`: fixed
+  a regression where a new / empty package would cause read-installed to throw.
+  ([@othiym23](https://github.com/othiym23) /
+  [@pgilad](https://github.com/pgilad))
+
+### v2.1.15 (2014-12-18):
+
+* [`e5a2dee`](https://github.com/npm/npm/commit/e5a2dee47c74f26c56fee5998545b97497e830c8)
+  [#6951](https://github.com/npm/npm/issues/6951) `fs-vacuum@1.2.5`: Use
+  `path-is-inside` for better Windows normalization.
+  ([@othiym23](https://github.com/othiym23))
+* [`ac6167c`](https://github.com/npm/npm/commit/ac6167c2b9432939c57296f7ddd11ad5f8f918b2)
+  [#6955](https://github.com/npm/npm/issues/6955) Call `path.normalize` in
+  `lib/utils/gently-rm.js` for better Windows normalization.
+  ([@ben-page](https://github.com/ben-page))
+* [`c625d71`](https://github.com/npm/npm/commit/c625d714795e3b5badd847945e2401adfad5a196)
+  [#6964](https://github.com/npm/npm/issues/6964) Clarify CA configuration
+  docs. ([@jeffjo](https://github.com/jeffjo))
+* [`58b8cb5`](https://github.com/npm/npm/commit/58b8cb5cdf26a854358b7c2ab636572dba9bac16)
+  [#6950](https://github.com/npm/npm/issues/6950) Fix documentation typos.
+  ([@martinvd](https://github.com/martinvd))
+* [`7c1299d`](https://github.com/npm/npm/commit/7c1299d00538ea998684a1903a4091eafc63b7f1)
+  [#6909](https://github.com/npm/npm/issues/6909) Remove confusing mention of
+  rubygems `~>` semver operator. ([@mjtko](https://github.com/mjtko))
+* [`7dfdcc6`](https://github.com/npm/npm/commit/7dfdcc6debd8ef1fc52a2b508997d15887aad824)
+  [#6909](https://github.com/npm/npm/issues/6909) `semver@4.1.1`: Synchronize
+  documentation with PR [#6909](https://github.com/npm/npm/issues/6909)
+  ([@othiym23](https://github.com/othiym23))
+* [`adfddf3`](https://github.com/npm/npm/commit/adfddf3b682e0ae08e4b59d87c1b380dd651c572)
+  [#6925](https://github.com/npm/npm/issues/6925) Correct typo in
+  `doc/api/npm-ls.md` ([@oddurs](https://github.com/oddurs))
+* [`f5c534b`](https://github.com/npm/npm/commit/f5c534b711ab173129baf366c4f08d68f6117333)
+  [#6920](https://github.com/npm/npm/issues/6920) Remove recommendation to run
+  as root from `README.md`.
+  ([@robertkowalski](https://github.com/robertkowalski))
+* [`3ef4459`](https://github.com/npm/npm/commit/3ef445922cd39f25b992d91bd22c4d367882ea22)
+  [#6920](https://github.com/npm/npm/issues/6920) `npm-@googlegroups.com` has
+  gone the way of all things. That means it's gone.
+  ([@robertkowalski](https://github.com/robertkowalski))
+
+### v2.1.14 (2014-12-13):
+
+* [`cf7aeae`](https://github.com/npm/npm/commit/cf7aeae3c3a24e48d3de4006fa082f0c6040922a)
+  [#6923](https://github.com/npm/npm/issues/6923) Overaggressive link update
+  for new website broke node-gyp. ([@othiym23](https://github.com/othiym23))
+
+### v2.1.13 (2014-12-11):
+
+* [`cbb890e`](https://github.com/npm/npm/commit/cbb890eeacc0501ba1b8c6955f1c829c8af9f486)
+  [#6897](https://github.com/npm/npm/issues/6897) npm is a nice package manager
+  that runs server-side JavaScript. ([@othiym23](https://github.com/othiym23))
+* [`d9043c3`](https://github.com/npm/npm/commit/d9043c3b8d7450c3cb9ca795028c0e1c05377820)
+  [#6893](https://github.com/npm/npm/issues/6893) Remove erroneous docs about
+  preupdate / update / postupdate lifecycle scripts, which have never existed.
+  ([@devTristan](https://github.com/devTristan))
+* [`c5df4d0`](https://github.com/npm/npm/commit/c5df4d0d683cd3506808d1cd1acebff02a8b82db)
+  [#6884](https://github.com/npm/npm/issues/6884) Update npmjs.org to npmjs.com
+  in docs. ([@linclark](https://github.com/linclark))
+* [`cb6ff8d`](https://github.com/npm/npm/commit/cb6ff8dace1b439851701d4784d2d719c22ca7a7)
+  [#6879](https://github.com/npm/npm/issues/6879) npm version: Update
+  shrinkwrap post-check. ([@othiym23](https://github.com/othiym23))
+* [`2a340bd`](https://github.com/npm/npm/commit/2a340bdd548c6449468281e1444a032812bff677)
+  [#6868](https://github.com/npm/npm/issues/6868) Use magic numbers instead of
+  regexps to distinguish tarballs from other things.
+  ([@daxxog](https://github.com/daxxog))
+* [`f1c8bdb`](https://github.com/npm/npm/commit/f1c8bdb3f6b753d0600597e12346bdc3a34cb9c1)
+  [#6861](https://github.com/npm/npm/issues/6861) `npm-registry-client@4.0.5`:
+  Distinguish between error properties that are part of the response and error
+  strings that should be returned to the user.
+  ([@disrvptor](https://github.com/disrvptor))
+* [`d3a1b63`](https://github.com/npm/npm/commit/d3a1b6397fddef04b5198ca89d36d720aeb05eb6)
+  [#6762](https://github.com/npm/npm/issues/6762) Make `npm outdated` ignore
+  private packages. ([@KenanY](https://github.com/KenanY))
+* [`16d8542`](https://github.com/npm/npm/commit/16d854283ca5bcdb0cb2812fc5745d841652b952)
+  install.sh: Drop support for node < 0.8, remove engines bits.
+  ([@isaacs](https://github.com/isaacs))
+* [`b9c6046`](https://github.com/npm/npm/commit/b9c60466d5b713b1dc2947da14a5dfe42352e029)
+  `init-package-json@1.1.3`: ([@terinstock](https://github.com/terinstock))
+  noticed that `init.license` configuration doesn't stick. Make sure that
+  dashed defaults don't trump dotted parameters.
+  ([@othiym23](https://github.com/othiym23))
+* [`b6d6acf`](https://github.com/npm/npm/commit/b6d6acfc02c8887f78067931babab8f7c5180fed)
+  `which@1.0.8`: No longer use graceful-fs for some reason.
+  ([@isaacs](https://github.com/isaacs))
+* [`d39f673`](https://github.com/npm/npm/commit/d39f673caf08a90fb2bb001d79c98062d2cd05f4)
+  `request@2.51.0`: Incorporate bug fixes. ([@nylen](https://github.com/nylen))
+* [`c7ad727`](https://github.com/npm/npm/commit/c7ad7279cc879930ec58ccc62fa642e621ecb65c)
+  `columnify@1.3.2`: Incorporate bug fixes.
+  ([@timoxley](https://github.com/timoxley))
+
+### v2.1.12 (2014-12-04):
+
+* [`e5b1e44`](https://github.com/npm/npm/commit/e5b1e448bb4a9d6eae4ba0f67b1d3c2cea8ed383)
+  add alias verison=version ([@isaacs](https://github.com/isaacs))
+* [`5eed7bd`](https://github.com/npm/npm/commit/5eed7bddbd7bb92a44c4193c93e8529500c558e6)
+  `request@2.49.0` ([@nylen](https://github.com/nylen))
+* [`e72f81d`](https://github.com/npm/npm/commit/e72f81d8412540ae7d1e0edcc37c11bcb8169051)
+  `glob@4.3.1` / `minimatch@2.0.1` ([@isaacs](https://github.com/isaacs))
+* [`b8dcc36`](https://github.com/npm/npm/commit/b8dcc3637b5b71933b97162b7aff1b1a622c13e2)
+  `graceful-fs@3.0.5` ([@isaacs](https://github.com/isaacs))
+
 ### v2.1.11 (2014-11-27):
 
 * [`4861d28`](https://github.com/npm/npm/commit/4861d28ad0ebd959fe6bc15b9c9a50fcabe57f55)
