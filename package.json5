@@ -7,10 +7,10 @@
   name: 'yapm',
   description: 'A package manager for node (npm fork)',
 
-  // upstream npm@2.1.16 commit c62be4239d
+  // upstream npm@2.2.0  commit 6f2b726c03
   // upstream tj/npm     commit bbcb826fbe
   version: '2.0.1',
-  npm_version: '2.1.8',
+  npm_version: '2.2.0',
 
   author: {
     // forked from npm, author: Isaac Z. Schlueter <i@izs.me>
@@ -80,7 +80,7 @@
     'fstream-npm': '~1.0.1',
     'github-url-from-git': '~1.4.0',
     'github-url-from-username-repo': '~1.0.2',
-    'glob': '~4.3.1',
+    'glob': '~4.3.2',
     'graceful-fs': '~3.0.5',
     'inflight': '~1.0.4',
     'inherits': '~2.0.1',
@@ -91,8 +91,9 @@
     'mkdirp': '~0.5.0',
     'node-gyp': '~1.0.2',
     'nopt': '~3.0.1',
+    'normalize-git-url': '~1.0.0',
     'npm-cache-filename': '~1.0.1',
-    'npm-install-checks': '~1.0.2',
+    'npm-install-checks': '~1.0.5',
     'npm-user-validate': '~0.1.1',
     'once': '~1.3.1',
     'opener': '~1.4.0',
@@ -103,7 +104,7 @@
     'request': '~2.51.0',
     'retry': '~0.6.1',
     'rimraf': '~2.2.8',
-    'semver': '~4.1.1',
+    'semver': '~4.2.0',
     'sha': '~1.3.0',
     'slide': '~1.1.6',
     'sorted-object': '~1.0.0',
@@ -160,6 +161,7 @@
     'mkdirp',
     'node-gyp',
     'nopt',
+    'normalize-git-url',
     'npm-cache-filename',
     'npm-install-checks',
     'npm-user-validate',
@@ -231,7 +233,7 @@
   devDependencies: {
     'marked': '~0.3.2',
     'marked-man': '~0.1.4',
-    'nock': '~0.51.0',
+    'nock': '~0.52.4',
     'npm-registry-couchapp': '~2.6.2',
     'npm-registry-mock': '~0.6.3',
     'require-inject': '~1.1.0',
