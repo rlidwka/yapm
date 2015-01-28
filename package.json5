@@ -9,7 +9,7 @@
 
   // upstream npm@2.4.1  commit 51b2fd1974
   // upstream tj/npm     commit bbcb826fbe
-  version: '2.0.1',
+  version: '2.4.0',
   npm_version: '2.4.1',
 
   author: {
